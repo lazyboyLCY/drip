@@ -19,7 +19,7 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public boolean checkuser(String username) {
-        if (registerDao.checkuser(username) >= 0) {
+        if ((registerDao.checkuser(username)) >= 1) {
             return true; //已有用户名
         } else {
             return false;

@@ -14,21 +14,8 @@ public class RegisterController {
     @Autowired
     RegisterService registerService;
 
-
-    @RequestMapping("doregister")//测试注册
-    public ModelAndView index() {
-        ModelAndView mv = new ModelAndView("register");
-        return mv;
-    }
-
-    @RequestMapping("r_success")//可以注册
-    public ModelAndView index() {
-        ModelAndView mv = new ModelAndView("register");
-        return mv;
-    }
-
-    @RequestMapping("doregister")//注册失败
-    public ModelAndView index() {
+    @RequestMapping("testregister")//测试注册
+    public ModelAndView testregister() {
         ModelAndView mv = new ModelAndView("register");
         return mv;
     }
@@ -36,10 +23,16 @@ public class RegisterController {
     @RequestMapping("checkuser")//检查用户名
     public String checkuser(@RequestParam(value = "username")String username){
         if (registerService.checkuser(username)==false){ //该用户名未注册
-            return "redirect:/register/";
+            return "forward:/register/adduser";
         }else {
-            return "redirect:/register/该用户名已注册";
+            return "redirect:/register/r_fail";
         }
+    }
+
+    @RequestMapping("r_fail")//注册失败
+    public ModelAndView index() {
+        ModelAndView mv = new ModelAndView("r_fail");
+        return mv;
     }
 
     @RequestMapping("adduser")//添加用户

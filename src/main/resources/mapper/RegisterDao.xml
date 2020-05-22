@@ -7,7 +7,7 @@
         insert into user(username,password)values(#{username},#{password})
     </insert>
 
-    <select id="checkuser" resultType="com.li.drip.entity.User">
+    <select id="checkuser" resultType="int">
         select count(*) from user where username = #{username}
     </select>
 </mapper>
