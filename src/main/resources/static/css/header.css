@@ -1,0 +1,8 @@
+element.style {
+    width: 1057px;
+}
+
+#fixedLayer {
+    position: fixed;
+    z-index: 200;
+}
