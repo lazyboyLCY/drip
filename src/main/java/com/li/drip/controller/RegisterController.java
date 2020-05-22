@@ -19,7 +19,7 @@ public class RegisterController {
         ModelAndView mv = new ModelAndView("register");
         return mv;
     }
-
+    //加个注释合并一下
     @RequestMapping("checkuser")//检查用户名
     public String checkuser(@RequestParam(value = "username")String username){
         if (registerService.checkuser(username)==false){ //该用户名未注册
