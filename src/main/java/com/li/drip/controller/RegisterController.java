@@ -21,12 +21,13 @@ public class RegisterController {
         return mv;
     }
     //加个注释合并一下
-    @RequestMapping(value = "checkuser",method= RequestMethod.POST,consumes="application/json")//检查用户名
-    public String checkuser(@RequestParam String username){
+    @RequestMapping("checkuser")//检查用户名
+    @ResponseBody
+    public String checkuser(@RequestParam("username")String username){
         if (registerService.checkuser(username)==false){
-            return "data:\"false\"";//该用户名未注册
+            return "false";//该用户名未注册
         }else {
-            return "data:\"true\"";
+            return "true";
         }
     }
 
