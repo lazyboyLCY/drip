@@ -1,10 +1,11 @@
 package com.li.drip.controller;
 
+import com.li.drip.entity.User;
 import com.li.drip.service.RegisterService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -20,12 +21,12 @@ public class RegisterController {
         return mv;
     }
     //加个注释合并一下
-    @RequestMapping("checkuser")//检查用户名
-    public String checkuser(@RequestParam(value = "username")String username){
-        if (registerService.checkuser(username)==false){ //该用户名未注册
-            return "forward:/register/adduser";
+    @RequestMapping(value = "checkuser",method= RequestMethod.POST,consumes="application/json")//检查用户名
+    public String checkuser(@RequestParam String username){
+        if (registerService.checkuser(username)==false){
+            return "data:\"false\"";//该用户名未注册
         }else {
-            return "redirect:/register/r_fail";
+            return "data:\"true\"";
         }
     }
 
