@@ -2,6 +2,7 @@ package com.li.drip.service.impl;
 
 import cn.hutool.crypto.digest.DigestUtil;
 import com.li.drip.dao.RegisterDao;
+import com.li.drip.entity.User;
 import com.li.drip.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public boolean checkuser(String username) {
+    public boolean checkuser(User username) {
         if ((registerDao.checkuser(username)) >= 1) {
             return true; //已有用户名
         } else {

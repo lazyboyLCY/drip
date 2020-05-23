@@ -28,7 +28,7 @@
                 <img th:src="@{/img/loginlogo1.png}" alt="IMG">
             </div>
 
-            <form class="login100-form validate-form layui-form" method="post" >
+            <form class="layui-form">
 				<span class="login100-form-title">
 					用户注册
 				</span>
@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="container-login100-form-btn">
-                    <button type="submit" class="login100-form-btn" lay-filter="save">
+                    <button lay-submit class="login100-form-btn" lay-filter="save">
                         注册
                     </button>
                 </div>
@@ -74,42 +74,60 @@
     </div>
 </div>
 
-<!--<script th:src="@{/layui/layui.js}"></script>-->
-<!--<script>-->
-<!--    //JavaScript代码区域-->
-<!--    layui.use('from', function () {-->
-<!--        var form = layui.form;-->
-<!--        form.verify({-->
-<!--            username: function(value){ //value：表单的值、item：表单的DOM对象-->
-<!--                var datas={username: value};-->
-<!--                var message = '';-->
-<!--                $.ajax({-->
-<!--                    type:"POST",-->
-<!--                    url:"/register/checkuser",-->
-<!--                    async: false, //改为同步请求-->
-<!--                    contentType:'application/json;charset=UTF-8',-->
-<!--                    data:JSON.stringify(datas),-->
-<!--                    dataType:'json',-->
-<!--                    success:function(data){-->
-<!--                        if(data){-->
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('form', function () {
+        var form = layui.form;
+        // form.verify({
+        //     username: function(value){ //value：表单的值、item：表单的DOM对象
+        //         var datas={username: value};
+        //         var message = '';
+        //         $.ajax({
+        //             type:"POST",
+        //             url:"/register/checkuser",
+        //             async: false, //改为同步请求
+        //             contentType:'application/json;charset=UTF-8',
+        //             data:JSON.stringify(datas),
+        //             dataType:'json',
+        //             success:function(data){
+        //                 if(data){
+        //
+        //                 }else{
+        //                     message ="用户名已存在，请重新输入！"
+        //                 }
+        //             }
+        //         });
+        //         //需要注意  需要将返回信息写在ajax方法外
+        //         if (message !== '')
+        //             return message;
+        //     }
+        //
+        // });
+        form.on('submit(save)', function(data){
+            // alert(data.field)
+            layui.jquery.ajax({
+                            type:"POST",
+                            url:"/register/checkuser",
+                            async: false, //改为同步请求
+                            contentType:'application/json;charset=UTF-8',
+                            data:JSON.stringify(data.field),
+                            dataType:'json',
+                            success:function(data){
+                                if(data){
+                                    alert("用户名已存在，请重新输入")
+                                }else{
+                                    // message ="用户名已存在，请重新输入！"
+                                    //如果返回为false,用户名不存在
 
-<!--                        }else{-->
-<!--                            message ="用户名已存在，请重新输入！"-->
-<!--                        }-->
-<!--                    }-->
-<!--                });-->
-<!--                //需要注意  需要将返回信息写在ajax方法外-->
-<!--                if (message !== '')-->
-<!--                    return message;-->
-<!--            }-->
+                                }
+                            }
+                        });
+            return false;
+        });
+    });
 
-<!--        });-->
-<!--        form.on('submit(save)', function(data){-->
-<!--            return false;-->
-<!--        });-->
-<!--    });-->
-
-<!--</script>-->
+</script>
 
 
 </body>

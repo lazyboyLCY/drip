@@ -23,8 +23,8 @@ public class RegisterController {
     //加个注释合并一下
     @RequestMapping("checkuser")//检查用户名
     @ResponseBody
-    public String checkuser(@RequestParam("username")String username){
-        if (registerService.checkuser(username)==false){
+    public String checkuser(@RequestBody User user){
+        if (registerService.checkuser(user)==false){
             return "false";//该用户名未注册
         }else {
             return "true";

@@ -1,6 +1,8 @@
 package com.li.drip.service;
 
+import com.li.drip.entity.User;
+
 public interface RegisterService {
     boolean adduser(String username,String password);
-    boolean checkuser(String username);
+    boolean checkuser(User user);
 }
