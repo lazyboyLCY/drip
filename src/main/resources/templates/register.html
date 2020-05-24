@@ -115,7 +115,7 @@
                             dataType:'json',
                             success:function(data){
                                 if(data){
-                                    alert("用户名已存在，请重新输入")
+                                    layer.msg('用户名已存在，请重新输入');
                                 }else{
 
                                     //如果返回为false,用户名不存在
