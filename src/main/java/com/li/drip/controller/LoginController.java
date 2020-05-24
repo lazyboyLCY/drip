@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-
 @Controller
 @RequestMapping("login")//登录
 public class LoginController {
@@ -17,7 +16,6 @@ public class LoginController {
     RegisterService registerService;
     @Autowired
     LoginService loginService;
-
 
     @RequestMapping("dologin")
     public ModelAndView index() {
@@ -29,16 +27,5 @@ public class LoginController {
     public boolean login(@RequestBody User user){
         //查出该用户的用户名和密码
         return(loginService.Login(user));
-
     }
-
-//    @RequestMapping("adduser")//添加用户
-//    private String adduser(@RequestParam(value="username")String username,@RequestParam(value="password")String password){ //接收增加的数据
-//        registerService.adduser(username, password);
-//        return "redirect:/register/index";
-//    }
-
-
-
-
 }

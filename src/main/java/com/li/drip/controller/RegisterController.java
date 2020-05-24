@@ -20,31 +20,14 @@ public class RegisterController {
         ModelAndView mv = new ModelAndView("register");
         return mv;
     }
-    //加个注释合并一下
     @RequestMapping("checkuser")//检查用户名
     @ResponseBody
     public String checkuser(@RequestBody User user){
         if (registerService.checkuser(user)==false){
-            adduser(user.getUsername(), user.getPassword());
+            registerService.adduser(user.getUsername(), user.getPassword());
             return "false";//该用户名未注册
         }else {
             return "true";
         }
     }
-
-    @RequestMapping("r_fail")//注册失败
-    public ModelAndView index() {
-        ModelAndView mv = new ModelAndView("r_fail");
-        return mv;
-    }
-
-    @RequestMapping("adduser")//添加用户
-    private String adduser(@RequestParam(value="username")String username,@RequestParam(value="password")String password){ //接收增加的数据
-        registerService.adduser(username, password);
-        return "redirect:/login/dologin";
-    }
-
-
-
-
 }

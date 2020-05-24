@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LoginDao {
-int searchUser(User user);
+    int searchUser(User user);
 }
