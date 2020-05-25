@@ -6,6 +6,9 @@ import com.li.drip.entity.User;
 import com.li.drip.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpSession;
+
 @Service
 public class LoginServiceImpl implements LoginService {
     @Autowired

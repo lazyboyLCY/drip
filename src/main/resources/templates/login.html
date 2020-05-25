@@ -25,7 +25,7 @@
                 <img th:src="@{/img/loginlogo1.png}" alt="IMG">
             </div>
 
-            <form class="login100-form validate-form layui-form" method="post" action="#">
+            <form class="login100-form validate-form layui-form" method="post" >
 				<span class="login100-form-title">
 					用户登录
 				</span>
@@ -79,14 +79,15 @@
             // alert(data.field)
             layui.jquery.ajax({
                 type:"POST",
-                url:"/login/login",
+                url:"/login/checklogin",
                 async: false, //改为同步请求
                 contentType:'application/json;charset=UTF-8',
                 data:JSON.stringify(data.field),
                 dataType:'json',
                 success:function(data){
                     if(data){
-                        layer.msg('用户名或密码正确');
+                        //layer.msg('用户名或密码正确');
+                        location.href="/personalpage/testpersonalpage";
                     }else{
                         layer.msg('用户名或密码错误');
                     }

@@ -9,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("login")//登录
 public class LoginController {
@@ -22,7 +25,7 @@ public class LoginController {
         ModelAndView mv = new ModelAndView("login");
         return mv;
     }
-    @RequestMapping("login")//检查用户名
+    @RequestMapping("checklogin")//检查用户名
     @ResponseBody
     public boolean login(@RequestBody User user){
         //查出该用户的用户名和密码
