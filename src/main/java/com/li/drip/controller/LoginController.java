@@ -27,8 +27,18 @@ public class LoginController {
     }
     @RequestMapping("checklogin")//检查用户名
     @ResponseBody
-    public boolean login(@RequestBody User user){
+    public boolean login(@RequestBody User user,HttpServletRequest request){
         //查出该用户的用户名和密码
-        return(loginService.Login(user));
+        boolean login = loginService.Login(user);
+        if (login){
+            HttpSession session=request.getSession();
+            session.setAttribute("username",user.getUsername());
+            session.setAttribute("password",user.getPassword());
+            System.out.println(session.getAttribute("username"));
+            System.out.println(session.getAttribute("password"));
+            return true;
+        }else{
+            return false;
+        }
     }
 }

@@ -49,8 +49,10 @@ public class LoginFilter implements Filter {
         if (uri.startsWith("/")) {
             if (!Arrays.asList(noNeedAuthPage).contains(uri)) { //需要被拦截的
                 String username = (String) request.getSession().getAttribute("username");
+                String password = (String) request.getSession().getAttribute("password");
                 System.out.println(username);
-                if (null == username) {
+                System.out.println(password);
+                if ((null == username) && (null == password)) {
                     response.sendRedirect("/login/dologin");
                     return;
                 }

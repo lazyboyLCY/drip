@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>我的资料</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+    <!--    引入bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header layui-bg-green">
+        <div class="layui-logo">
+            <img src="/img/logo2zuhe2.png" style="height:90%;width:90%"></div>
+        <ul class="layui-nav layui-layout-right layui-bg-green">
+            <!--个人头像-->
+            <li class="layui-nav-item">
+                <a href="javascript:;" th:text="${username}">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">退出</a></li>
+        </ul>
+    </div>
+
+    <!--    侧边栏-->
+    <div class="layui-side layui-bg-green">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-bg-green"><a href="">个人资料</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="">动态心情</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="">我的文章</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="">我的笔记</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="">经验分享</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="">读书分享</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="">消息发布</a></li>
+                <!--layui-nav-itemed-->
+                <li class="layui-nav-item  layui-bg-green">
+                    <a class="" href="javascript:;">侧边导航</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">列表一</a></dd>
+                        <dd><a href="javascript:;">列表二</a></dd>
+                        <dd><a href="javascript:;">列表三</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-bg-green">
+                    <a href="javascript:;">侧边导航</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">列表一</a></dd>
+                        <dd><a href="javascript:;">列表二</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <div class="main">
+                <div>
+                    <table class="table table table-striped table-hover active table-bordered">
+                        <tr class="info">
+                            <th>个人资料</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr><!--此处写循环查询-->
+<!--                            <td class="danger" th:text="111"></td>-->
+                            <td th:text="111"></td>
+                            <td th:text="111"></td>
+                            <!--修改删除-->
+                            <td>
+                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('111')'">修改</button>
+<!--                                <button class="btn btn-info" type="submit" th:onclick="'showDelete('111')'">删除</button>-->
+                            </td>
+                        </tr>
+                        <tr><!--此处写循环查询-->
+                            <!--                            <td class="danger" th:text="111"></td>-->
+                            <td th:text="111"></td>
+                            <td th:text="111"></td>
+                            <!--修改删除-->
+                            <td>
+                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('111')'">修改</button>
+                                <!--                                <button class="btn btn-info" type="submit" th:onclick="'showDelete('111')'">删除</button>-->
+                            </td>
+                        </tr>
+                        <tr><!--此处写循环查询-->
+                            <!--                            <td class="danger" th:text="111"></td>-->
+                            <td th:text="111"></td>
+                            <td th:text="111"></td>
+                            <!--修改删除-->
+                            <td>
+                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('111')'">修改</button>
+                                <!--                                <button class="btn btn-info" type="submit" th:onclick="'showDelete('111')'">删除</button>-->
+                            </td>
+                        </tr>
+                        <tr><!--此处写循环查询-->
+                            <!--                            <td class="danger" th:text="111"></td>-->
+                            <td th:text="111"></td>
+                            <td th:text="111"></td>
+                            <!--修改删除-->
+                            <td>
+                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('111')'">修改</button>
+                                <!--                                <button class="btn btn-info" type="submit" th:onclick="'showDelete('111')'">删除</button>-->
+                            </td>
+                        </tr>
+                        <tr><!--此处写循环查询-->
+                            <!--                            <td class="danger" th:text="111"></td>-->
+                            <td th:text="111"></td>
+                            <td th:text="111"></td>
+                            <!--修改删除-->
+                            <td>
+                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('111')'">修改</button>
+                                <!--                                <button class="btn btn-info" type="submit" th:onclick="'showDelete('111')'">删除</button>-->
+                            </td>
+                        </tr>
+                        <tr><!--此处写循环查询-->
+                            <!--                            <td class="danger" th:text="111"></td>-->
+                            <td th:text="111"></td>
+                            <td th:text="111"></td>
+                            <!--修改删除-->
+                            <td>
+                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('111')'">修改</button>
+                                <!--                                <button class="btn btn-info" type="submit" th:onclick="'showDelete('111')'">删除</button>-->
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+<!--                &lt;!&ndash;清空&ndash;&gt;-->
+<!--                <div>-->
+<!--                    <button class="clern  btn btn-info" type="submit" onclick="clean()">清空</button>-->
+<!--                </div>-->
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        ©licy 底部固定区域
+    </div>
+</div>
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+</script>
+</body>
+</html>
