@@ -29,15 +29,14 @@ public class LoginController {
     @ResponseBody
     public boolean login(@RequestBody User user,HttpServletRequest request){
         //查出该用户的用户名和密码
+
         boolean login = loginService.Login(user);
-        if (login){
-            HttpSession session=request.getSession();
+        if(login){
+            HttpSession session = request.getSession();
             session.setAttribute("username",user.getUsername());
             session.setAttribute("password",user.getPassword());
-            System.out.println(session.getAttribute("username"));
-            System.out.println(session.getAttribute("password"));
             return true;
-        }else{
+   }else{
             return false;
         }
     }
