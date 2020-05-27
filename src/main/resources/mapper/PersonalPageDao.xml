@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.li.drip.dao.PersonalPageDao">
+    <insert id="savePersonalData">
+        insert into personaldata (username,nickname,gender,age,school,sno,major,hobby,skill,signature)
+        values(#{username},#{nickname},#{gender},#{age},#{school},#{sno},#{major},#{hobby},#{skill},#{signature})
+    </insert>
+    <update id="updatePersonalData">
+        update personaldata set username=#{username},nickname=#{nickname},gender=#{gender},age=#{age},school=#{school},
+        sno=#{sno},major=#{major},hobby=#{hobby},skill=#{skill},signature=#{signature} where username=#{username}
+    </update>
+    <select id="searchPersonalDate" resultType="com.li.drip.entity.PersonalData">
+        select * from personaldata where username=#{username}
+    </select>
+</mapper>
