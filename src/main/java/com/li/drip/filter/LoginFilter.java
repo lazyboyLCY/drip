@@ -38,7 +38,6 @@ public class LoginFilter implements Filter {
         String uri=request.getRequestURI();
 //        uri=StringUtils.remove(uri,"/register/");
         System.out.println("uri:"+request.getRequestURI());
-
         String[] noNeedAuthPage = new String[]{ //放行的 "/Controller/方法"
                 "/register/testregister",
                 "/register/checkuser",

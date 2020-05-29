@@ -10,4 +10,8 @@
     <select id="checkuser" resultType="int">
         select count(*) from user where username = #{username}
     </select>
+
+    <insert id="addpersonaldata">
+        insert into personaldata(username) values (#{username})
+    </insert>
 </mapper>

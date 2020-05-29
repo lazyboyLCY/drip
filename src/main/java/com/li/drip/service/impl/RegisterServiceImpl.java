@@ -26,4 +26,8 @@ public class RegisterServiceImpl implements RegisterService {
             return false;
         }
     }
+    @Override
+    public boolean addpersonaldata(User user) {
+        return registerDao.addpersonaldata(user);
+    }
 }

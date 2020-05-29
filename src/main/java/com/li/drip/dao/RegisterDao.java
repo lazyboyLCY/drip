@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface RegisterDao {
     boolean adduser(String username, String password);
     int checkuser(User user);
+    boolean addpersonaldata(User user);
 }
 
 

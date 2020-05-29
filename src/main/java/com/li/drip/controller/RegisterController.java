@@ -25,6 +25,7 @@ public class RegisterController {
     public String checkuser(@RequestBody User user){
         if (registerService.checkuser(user)==false){
             registerService.adduser(user.getUsername(), user.getPassword());
+            registerService.addpersonaldata(user);
             return "false";//该用户名未注册
         }else {
             return "true";

@@ -1,61 +1,39 @@
 package com.li.drip.entity;
 
-/**
- * @author LiKaiXin
- * @date 2020-05-27 22:07
- */
 public class PersonalData {
-    /**
-     * 主键
-     */
-    private Integer id;
-    /**
-     * 昵称
-     */
-    private String nickname;
-    /**
-     * 性别
-     */
-    private String gender;
-    /**
-     * 年龄
-     */
-    private String age;
-    /**
-     * 学校
-     */
-    private String school;
-    /**
-     * 学号
-     */
-    private String sno;
-    /**
-     * 主修
-     */
-    private String major;
-    /**
-     * 爱好
-     */
-    private String hobby;
-    /**
-     * 技能
-     */
-    private String skill;
-    /**
-     * 签名
-     */
-    private String signature;
-    /**
-     * 用户名
-     */
-    private String username;
+    private int id; //id
+    private int age; //年龄
+    private int sno; //学号
+    private String nickname; //昵称
+    private String gender; //性别
+    private String school;  //学校
+    private String major;   //专业
+    private String hobby;   //爱好
+    private String skill;   //技能
+    private String signature;   //签名
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getSno() {
+        return sno;
+    }
+
+    public void setSno(int sno) {
+        this.sno = sno;
     }
 
     public String getNickname() {
@@ -74,28 +52,12 @@ public class PersonalData {
         this.gender = gender;
     }
 
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
-
     public String getSchool() {
         return school;
     }
 
     public void setSchool(String school) {
         this.school = school;
-    }
-
-    public String getSno() {
-        return sno;
-    }
-
-    public void setSno(String sno) {
-        this.sno = sno;
     }
 
     public String getMajor() {
@@ -129,13 +91,4 @@ public class PersonalData {
     public void setSignature(String signature) {
         this.signature = signature;
     }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 }
-

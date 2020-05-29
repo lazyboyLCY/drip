@@ -14,6 +14,22 @@
     <div class="layui-header layui-bg-green">
         <div class="layui-logo">
             <img src="/img/logo2zuhe2.png" style="height:90%;width:90%"></div>
+        <ul class="layui-nav layui-layout-left layui-bg-green">
+            <li class="layui-nav-item"><a href="">动态心情</a></li>
+            <li class="layui-nav-item"><a href="">我的文章</a></li>
+            <li class="layui-nav-item"><a href="">我的笔记</a></li>
+            <li class="layui-nav-item"><a href="">经验分享</a></li>
+            <li class="layui-nav-item"><a href="">读书分享</a></li>
+            <li class="layui-nav-item"><a href="">消息发布</a></li>
+<!--            <li class="layui-nav-item">-->
+<!--                <a href="javascript:;">列表</a>-->
+<!--                <dl class="layui-nav-child">-->
+<!--                    <dd><a href="">行1</a></dd>-->
+<!--                    <dd><a href="">行2</a></dd>-->
+<!--                    <dd><a href="">行3</a></dd>-->
+<!--                </dl>-->
+<!--            </li>-->
+        </ul>
         <ul class="layui-nav layui-layout-right layui-bg-green">
             <!--个人头像-->
             <li class="layui-nav-item">
@@ -34,13 +50,13 @@
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                <li class="layui-nav-item layui-bg-green"><a href="">个人资料</a></li>
-                <li class="layui-nav-item layui-bg-green"><a href="">动态心情</a></li>
-                <li class="layui-nav-item layui-bg-green"><a href="">我的文章</a></li>
-                <li class="layui-nav-item layui-bg-green"><a href="">我的笔记</a></li>
-                <li class="layui-nav-item layui-bg-green"><a href="">经验分享</a></li>
-                <li class="layui-nav-item layui-bg-green"><a href="">读书分享</a></li>
-                <li class="layui-nav-item layui-bg-green"><a href="">消息发布</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="">修改个人资料</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="">发布动态心情</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="">发布文章</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="">新增笔记</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="">发表经验分享</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="">发表读书分享</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="">发布消息</a></li>
                 <!--layui-nav-itemed-->
                 <li class="layui-nav-item  layui-bg-green">
                     <a class="" href="javascript:;">侧边导航</a>
@@ -77,61 +93,81 @@
                         </tr>
                         <tr><!--此处写循环查询-->
 <!--                            <td class="danger" th:text="111"></td>-->
-                            <td th:text="111"></td>
-                            <td th:text="111"></td>
+                            <td th:text="昵称"></td>
+                            <td th:text="${personaldata.nickname}"></td>
                             <!--修改删除-->
                             <td>
-                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('111')'">修改</button>
+                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('+')'">修改</button>
 <!--                                <button class="btn btn-info" type="submit" th:onclick="'showDelete('111')'">删除</button>-->
                             </td>
                         </tr>
                         <tr><!--此处写循环查询-->
                             <!--                            <td class="danger" th:text="111"></td>-->
-                            <td th:text="111"></td>
-                            <td th:text="111"></td>
+                            <td th:text="性别"></td>
+                            <td th:text="男"></td>
                             <!--修改删除-->
                             <td>
-                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('111')'">修改</button>
+                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('+')'">修改</button>
                                 <!--                                <button class="btn btn-info" type="submit" th:onclick="'showDelete('111')'">删除</button>-->
                             </td>
                         </tr>
                         <tr><!--此处写循环查询-->
                             <!--                            <td class="danger" th:text="111"></td>-->
-                            <td th:text="111"></td>
-                            <td th:text="111"></td>
+                            <td th:text="年龄"></td>
+                            <td th:text="22"></td>
                             <!--修改删除-->
                             <td>
-                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('111')'">修改</button>
+                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('+')'">修改</button>
                                 <!--                                <button class="btn btn-info" type="submit" th:onclick="'showDelete('111')'">删除</button>-->
                             </td>
                         </tr>
                         <tr><!--此处写循环查询-->
                             <!--                            <td class="danger" th:text="111"></td>-->
-                            <td th:text="111"></td>
-                            <td th:text="111"></td>
+                            <td th:text="学校"></td>
+                            <td th:text="齐鲁工业大学"></td>
                             <!--修改删除-->
                             <td>
-                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('111')'">修改</button>
+                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('+')'">修改</button>
                                 <!--                                <button class="btn btn-info" type="submit" th:onclick="'showDelete('111')'">删除</button>-->
                             </td>
                         </tr>
                         <tr><!--此处写循环查询-->
                             <!--                            <td class="danger" th:text="111"></td>-->
-                            <td th:text="111"></td>
-                            <td th:text="111"></td>
+                            <td th:text="专业"></td>
+                            <td th:text="计算机科学与技术"></td>
                             <!--修改删除-->
                             <td>
-                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('111')'">修改</button>
+                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('+')'">修改</button>
                                 <!--                                <button class="btn btn-info" type="submit" th:onclick="'showDelete('111')'">删除</button>-->
                             </td>
                         </tr>
                         <tr><!--此处写循环查询-->
                             <!--                            <td class="danger" th:text="111"></td>-->
-                            <td th:text="111"></td>
-                            <td th:text="111"></td>
+                            <td th:text="爱好"></td>
+                            <td th:text="编程"></td>
                             <!--修改删除-->
                             <td>
-                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('111')'">修改</button>
+                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('+')'">修改</button>
+                                <!--                                <button class="btn btn-info" type="submit" th:onclick="'showDelete('111')'">删除</button>-->
+                            </td>
+                        </tr>
+                        <tr><!--此处写循环查询-->
+                            <!--                            <td class="danger" th:text="111"></td>-->
+                            <td th:text="技能"></td>
+                            <td th:text="素描"></td>
+                            <!--修改删除-->
+                            <td>
+                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('+')'">修改</button>
+                                <!--                                <button class="btn btn-info" type="submit" th:onclick="'showDelete('111')'">删除</button>-->
+                            </td>
+                        </tr>
+                        <tr><!--此处写循环查询-->
+                            <!--                            <td class="danger" th:text="111"></td>-->
+                            <td th:text="签名"></td>
+                            <td th:text="人生是一场旅行"></td>
+                            <!--修改删除-->
+                            <td>
+                                <button class="btn btn-info" type="submit" th:onclick="'showUpdate('+')'">修改</button>
                                 <!--                                <button class="btn btn-info" type="submit" th:onclick="'showDelete('111')'">删除</button>-->
                             </td>
                         </tr>
@@ -155,10 +191,36 @@
 <script th:src="@{/layui/layui.js}"></script>
 <script>
     //JavaScript代码区域
-    layui.use('element', function () {
+    layui.use(['element','layer'], function () {
         var element = layui.element;
-
+        var layer=layui.layer;
     });
+    function showUpdate() {
+        layer.prompt({
+            formType: 2,
+            value: '',
+            title: '请输入',
+            area: ['350px', '50px'] //自定义文本域宽高
+        }, function(value, index, elem){
+            var data=value;
+            layui.jquery.ajax({
+                type:"POST",
+                url:"/personaldata/updatepersonaldata",
+                async: false, //改为同步请求
+                contentType:'application/json;charset=UTF-8',
+                data:JSON.stringify(data),
+                success:function(data){
+                    if(data){
+                        //layer.msg('用户名或密码正确');
+                        location.href="/personaldata/searchpersonaldata";
+                    }else{
+                        layer.msg('修改失败');
+                    }
+                }
+            });
+            layer.close(index);
+        });
+    }
 </script>
 </body>
 </html>
