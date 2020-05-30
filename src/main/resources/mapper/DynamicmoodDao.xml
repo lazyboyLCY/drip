@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.li.drip.dao.DynamicmoodDao">
+    <insert id="add" parameterType="com.li.drip.entity.DynamicMood">
+        insert into dynamicmood(username,sendtime,title,message)values(#{username},#{sendtime},#{title},#{message})
+    </insert>
+    <select id="search" resultType="com.li.drip.entity.DynamicMood" parameterType="String" >
+        select username,sendtime,title,message from dynamicmood where username = #{username}
+    </select>
+</mapper>

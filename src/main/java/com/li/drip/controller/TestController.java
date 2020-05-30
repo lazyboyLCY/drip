@@ -17,9 +17,9 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/test")//登录
 public class TestController {
 
-    @RequestMapping("/publicpage")
+    @RequestMapping("/publicarticle")
     public ModelAndView index() {
-        ModelAndView mv = new ModelAndView("publicpage");
+        ModelAndView mv = new ModelAndView("publicarticle");
         return mv;
     }
 }
