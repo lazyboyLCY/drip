@@ -57,7 +57,13 @@
                         <dd><a href="javascript:location.href='/publicarticle/myarticle';">我的文章</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item layui-bg-green"><a href="">新增笔记</a></li>
+                <li class="layui-nav-item layui-bg-green">
+                    <a href="javascript:;">笔记模块</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:location.href='/test/testpage';">新增笔记</a></dd>
+                        <dd><a href="javascript:location.href='/test/testpage';">我的笔记</a></dd>
+                    </dl>
+                </li>
                 <li class="layui-nav-item layui-bg-green"><a href="">发表经验分享</a></li>
                 <li class="layui-nav-item layui-bg-green"><a href="">发表读书分享</a></li>
                 <li class="layui-nav-item layui-bg-green"><a href="">发布消息</a></li>
@@ -89,7 +95,7 @@
                                     <div class="layui-form-item layui-form-text" style="margin:10px;padding: 10px;margin-left: 0px">
                                         <label class="layui-form-label">内容</label>
                                         <div class="layui-input-block">
-                                            <textarea id="demo" name="message" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                            <textarea id="demo" name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
@@ -124,23 +130,6 @@
         var form = layui.form;
         var layedit = layui.layedit;
         layedit.build('demo');//建立编辑器
-        form.on('submit(formDemo)', function (data) {
-            layui.jquery.ajax({
-                type: "POST",
-                url: "/publicarticle/saveArticle",
-                async: false, //改为同步请求
-                contentType: 'application/json;charset=UTF-8',
-                data: JSON.stringify(data.field),
-                success: function (data) {
-                    if (data) {
-                        location.href = "/dynamicmood/searchdynamicmood";
-                    } else {
-                        layer.msg('修改失败');
-                    }
-                }
-            });
-            return false;
-        });
     });
 
 </script>

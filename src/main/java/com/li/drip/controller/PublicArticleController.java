@@ -46,7 +46,7 @@ public class PublicArticleController {
      * @date 2020-05-30
      * 删除文章
     */
-    @RequestMapping("deleteAreicle")
+    @RequestMapping("deleteArticle")
     @ResponseBody
     public Boolean deleteAreicle(@RequestBody Article article){
         return publicArticleService.deleteAreicle(article);
@@ -56,7 +56,7 @@ public class PublicArticleController {
      * @date 2020-05-30
      * 查找文章
     */
-    @RequestMapping("searchAreicle")
+    @RequestMapping("searchArticle")
     @ResponseBody
     public List<Article> searchAreicle(@RequestBody Article article,HttpServletRequest request){
         return publicArticleService.searchAreicle(article,request);
