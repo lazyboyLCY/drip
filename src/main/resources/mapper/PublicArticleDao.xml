@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.li.drip.dao.PublicArticleDao">
+    <insert id="saveArticle">
+    insert into article(a_time,a_senduser,a_title,a_message) values (#{createTime},#{username},#{title},#{message})
+    </insert>
+    <delete id="deleteArticle">
+        delete from article where id=#{id}
+    </delete>
+    <select id="searchArticle" resultType="com.li.drip.entity.Article">
+        select id as id,a_time as createTime,a_senduser as username,a_title as title,a_message as message
+        from article
+        where a_senduser =#{username}
+    </select>
+</mapper>
