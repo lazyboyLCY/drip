@@ -32,8 +32,7 @@ public class PublicArticleServiceImpl implements PublicArticleService {
     }
 
     @Override
-    public List<Article> searchAreicle(Article article, HttpServletRequest request) {
-        article.setUsername((String) request.getSession().getAttribute("username"));
+    public List<Article> searchAreicle(Article article) {
         return publicArticleDao.searchArticle(article);
     }
 }

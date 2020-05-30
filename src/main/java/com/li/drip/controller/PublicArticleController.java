@@ -58,8 +58,8 @@ public class PublicArticleController {
     */
     @RequestMapping("searchArticle")
     @ResponseBody
-    public List<Article> searchAreicle(@RequestBody Article article,HttpServletRequest request){
-        return publicArticleService.searchAreicle(article,request);
+    public List<Article> searchAreicle(@RequestBody Article article){
+        return publicArticleService.searchAreicle(article);
     }
 
 

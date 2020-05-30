@@ -12,6 +12,10 @@
     <select id="searchArticle" resultType="com.li.drip.entity.Article">
         select id as id,a_time as createTime,a_senduser as username,a_title as title,a_message as message
         from article
-        where a_senduser =#{username}
+        <where>
+            <if test="username!=null and username !=''">
+                a_senduser =#{username}
+            </if>
+        </where>
     </select>
 </mapper>

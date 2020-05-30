@@ -4,10 +4,10 @@ import java.util.Date;
 
 /**
  * @author LiChenYang
- * @date 2020-05-30 19:31
- * 文章
+ * @date 2020-05-30 22:01
+ * 实体类公共属性
  */
-public class Article {
+public class BaseEntity {
     /**
      * 主键
      */

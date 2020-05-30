@@ -24,5 +24,5 @@ public interface PublicArticleService {
       * @date 2020-05-30
       * 查找文章
      */
-     List<Article> searchAreicle(Article article, HttpServletRequest request);
+     List<Article> searchAreicle(Article article);
 }
