@@ -18,11 +18,11 @@ public interface PublicArticleService {
       * @date 2020-05-30
       * 删除文章
      */
-     Boolean deleteAreicle(Article article);
+     Boolean deleteArticle(Article article);
      /**
       * @author LiChenYang
       * @date 2020-05-30
       * 查找文章
      */
-     List<Article> searchAreicle(Article article);
+     List<Article> searchArticle(Article article);
 }

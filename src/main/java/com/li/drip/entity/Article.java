@@ -1,5 +1,7 @@
 package com.li.drip.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 /**

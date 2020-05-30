@@ -18,7 +18,7 @@ public class DynamicmoodServiceImpl implements DynamicmoodService {
     DynamicMood dynamicMood;
     @Override
     public boolean add(DynamicMood dynamicMood,HttpServletRequest request) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
         Date date = new Date();
         String data = simpleDateFormat.format(date);
         String username= (String) request.getSession().getAttribute("username");

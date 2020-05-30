@@ -1,9 +1,11 @@
 package com.li.drip.controller;
 
 import com.li.drip.entity.Article;
+import com.li.drip.entity.DynamicMood;
 import com.li.drip.service.PublicArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,6 +19,7 @@ import java.util.List;
 public class PublicArticleController {
     @Autowired
     private PublicArticleService publicArticleService;
+    Article article;
     @RequestMapping("/testpublicarticle")
     public ModelAndView publicarticle(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("publicarticle");
@@ -48,8 +51,10 @@ public class PublicArticleController {
     */
     @RequestMapping("deleteArticle")
     @ResponseBody
-    public Boolean deleteAreicle(@RequestBody Article article){
-        return publicArticleService.deleteAreicle(article);
+    public String deleteAreicle(int id){
+        article.setId(id);
+        publicArticleService.deleteArticle(article);
+        return "redirect:/publicarticle/searchArticle";
     }
     /**
      * @author LiChenYang
@@ -58,8 +63,14 @@ public class PublicArticleController {
     */
     @RequestMapping("searchArticle")
     @ResponseBody
-    public List<Article> searchAreicle(@RequestBody Article article){
-        return publicArticleService.searchAreicle(article);
+    public ModelAndView searchAreicle(Article article,HttpServletRequest request){
+        ModelAndView mv = new ModelAndView("myarticle");
+        String username= (String) request.getSession().getAttribute("username");
+        article.setUsername(username);
+        List<Article> list=publicArticleService.searchArticle(article);
+        mv.addObject("list", list);
+        mv.addObject("username",username);
+        return mv;
     }
 
 

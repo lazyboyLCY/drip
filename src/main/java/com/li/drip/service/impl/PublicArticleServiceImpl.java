@@ -1,5 +1,6 @@
 package com.li.drip.service.impl;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.li.drip.dao.PublicArticleDao;
 import com.li.drip.entity.Article;
 import com.li.drip.service.PublicArticleService;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -22,17 +24,18 @@ public class PublicArticleServiceImpl implements PublicArticleService {
     public Boolean saveArticle(Article article, HttpServletRequest request) {
         //得到session
        article.setUsername((String) request.getSession().getAttribute("username"));
-       article.setCreateTime(new Date());
+        Date date = new Date();
+        article.setCreateTime(date);
         return publicArticleDao.saveArticle(article);
     }
 
     @Override
-    public Boolean deleteAreicle(Article article) {
+    public Boolean deleteArticle(Article article) {
         return publicArticleDao.deleteArticle(article.getId());
     }
 
     @Override
-    public List<Article> searchAreicle(Article article) {
+    public List<Article> searchArticle(Article article) {
         return publicArticleDao.searchArticle(article);
     }
 }

@@ -54,7 +54,7 @@
                     <a href="javascript:;">文章模块</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:location.href='/publicarticle/testpublicarticle';">发布文章</a></dd>
-                        <dd><a href="javascript:location.href='/publicarticle/myarticle';">我的文章</a></dd>
+                        <dd><a href="javascript:location.href='/publicarticle/searchArticle';">我的文章</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item layui-bg-green"><a href="">新增笔记</a></li>
@@ -89,7 +89,7 @@
                                     <div class="layui-form-item layui-form-text" style="margin:10px;padding: 10px;margin-left: 0px">
                                         <label class="layui-form-label">内容</label>
                                         <div class="layui-input-block">
-                                            <textarea id="demo" name="message" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                            <textarea id="demo" name="message" lay-verify="content" placeholder="请输入内容" class="layui-textarea"></textarea>
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
@@ -123,7 +123,24 @@
         var layer = layui.layer;
         var form = layui.form;
         var layedit = layui.layedit;
-        layedit.build('demo');//建立编辑器
+        var index=layedit.build('demo', {
+            height: 400,//设置编辑器高度
+            tool: ['strong' //加粗
+                ,'italic' //斜体
+                ,'underline' //下划线
+                ,'del' //删除线
+                ,'|' //分割线
+                ,'left' //左对齐
+                ,'center' //居中对齐
+                ,'right' //右对齐
+                ,'face' //表情
+            ] //设置功能列表
+        });//建立编辑器
+        form.verify({
+            content:function () {
+                layedit.sync(index);
+            }
+        })
         form.on('submit(formDemo)', function (data) {
             layui.jquery.ajax({
                 type: "POST",
@@ -133,7 +150,7 @@
                 data: JSON.stringify(data.field),
                 success: function (data) {
                     if (data) {
-                        location.href = "/dynamicmood/searchdynamicmood";
+                        location.href = "/publicarticle/searchArticle";
                     } else {
                         layer.msg('修改失败');
                     }
