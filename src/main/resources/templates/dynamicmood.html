@@ -58,7 +58,7 @@
                 <li class="layui-nav-item layui-bg-green"><a href="">发布消息</a></li>
                 <!--layui-nav-itemed-->
                 <li class="layui-nav-item  layui-bg-green">
-                    <a  href="javascript:;">侧边导航</a>
+                    <a href="javascript:;">侧边导航</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;">列表一</a></dd>
                         <dd><a href="javascript:;">列表二</a></dd>
@@ -118,17 +118,35 @@
                         </div>
 
 
-                        <ul th:each="dynamic,iterStat :${list}" style="list-style:none">
-                            <li class="layui-col-md12">
-                                <dl class="layui-card">
-                                    <dd th:text="'用户名   :'+${dynamic.username}" class="layui-card-body"></dd>
-                                    <dd th:text="'发布时间   :'+${dynamic.sendtime}" class="layui-card-body"></dd>
-                                    <dd th:text="'标题:   '+${dynamic.title}" class="layui-card-body"></dd>
-                                    <dd th:text="'动态:   '+${dynamic.message}" class="layui-card-body"></dd>
-                                    <dd th:text="'---------------------------------------------------------------------------------------------------------------------------------'" class="layui-card-body"></dd>
-                                </dl>
-                            </li>
-                        </ul>
+                        <!--                        <ul th:each="dynamic,iterStat :${list}" style="list-style:none">-->
+                        <!--                            <li class="layui-col-md12">-->
+                        <!--                                <dl class="layui-card">-->
+                        <!--                                    <dd th:text="'用户名   :'+${dynamic.username}" class="layui-card-body"></dd>-->
+                        <!--                                    <dd th:text="'发布时间   :'+${dynamic.sendtime}" class="layui-card-body"></dd>-->
+                        <!--                                    <dd th:text="'标题:   '+${dynamic.title}" class="layui-card-body"></dd>-->
+                        <!--                                    <dd th:text="'动态:   '+${dynamic.message}" class="layui-card-body"></dd>-->
+                        <!--                                    <dd th:text="'-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;'" class="layui-card-body"></dd>-->
+                        <!--                                </dl>-->
+                        <!--                            </li>-->
+                        <!--                        </ul>-->
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md12">
+                                <div class="layui-card" style="height: auto;padding: 20px">
+                                    <ul th:each="dynamic,iterStat :${list}" class="layui-timeline" style="margin: 0px">
+                                        <li class="layui-timeline-item">
+                                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                                            <dl class="layui-timeline-content layui-text">
+                                                <h3 th:text="'发布时间   :'+${dynamic.sendtime}"
+                                                    class="layui-timeline-title"></h3>
+                                                <h5 th:text="'用户名   :'+${dynamic.username}"></h5>
+                                                <h5 th:text="'标题:   '+${dynamic.title}"></h5>
+                                                <p th:text="'动态:   '+${dynamic.message}"></p>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

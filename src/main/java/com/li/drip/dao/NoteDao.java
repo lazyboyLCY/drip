@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface NoteDao {
     Boolean saveNote(Note note);
-    Boolean deleteNote(Integer id);
+    Boolean deleteNote(Note note);
     List<Note> searchNote(Note note);
 }
