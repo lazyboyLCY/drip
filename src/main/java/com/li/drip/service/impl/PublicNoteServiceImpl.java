@@ -7,6 +7,9 @@ import com.li.drip.service.PublicNoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,7 +21,12 @@ public class PublicNoteServiceImpl implements PublicNoteService {
     @Autowired
     private NoteDao noteDao;
     @Override
-    public Boolean saveNote(Note note) {
+    public Boolean saveNote(Note note, HttpServletRequest request) {
+        note.setUsername((String) request.getSession().getAttribute("username"));
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date data = new Date();//创建时间对象
+        String date = simpleDateFormat.format(data);
+        note.setCreateTime(date);
         return noteDao.saveNote(note);
     }
 

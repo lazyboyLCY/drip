@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -20,8 +21,8 @@ public class PublicNoteController {
     private PublicNoteService publicNoteService;
   @RequestMapping("saveNote")
   @ResponseBody
-    public Boolean saveNote(@RequestBody Note note){
-     return publicNoteService.saveNote(note);
+    public Boolean saveNote(@RequestBody Note note,HttpServletRequest request){
+     return publicNoteService.saveNote(note,request);
   }
   @RequestMapping("deleteNote")
   @ResponseBody
