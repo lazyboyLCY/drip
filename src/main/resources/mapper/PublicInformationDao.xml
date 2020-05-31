@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.li.drip.dao.PublicInformationDao">
+    <insert id="saveInformation">
+    insert into information(i_time,i_senduser,i_title,i_message) values (#{createTime},#{username},#{title},#{message})
+    </insert>
+    <delete id="deleteInformation">
+        delete from information where id=#{id}
+    </delete>
+    <select id="searchInformation" resultType="com.li.drip.entity.Information">
+        select id as id,i_time as createTime,i_senduser as username,i_title as title,i_message as message
+        from information
+        <where>
+            <if test="username!=null and username !=''">
+                i_senduser =#{username}
+            </if>
+        </where>
+    </select>
+</mapper>
