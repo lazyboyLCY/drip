@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("experience")
-public class ExperienceController {
+public class PublicExperienceController {
     @Autowired
     private ExperienceService experienceService;
     @RequestMapping("saveExperience")
