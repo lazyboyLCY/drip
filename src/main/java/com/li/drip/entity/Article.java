@@ -21,7 +21,16 @@ public class Article {
     /**
      * 创建时间
      */
-    private Date createTime;
+    private String createTime;
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
     /**
      * 标题
      */
@@ -47,13 +56,7 @@ public class Article {
         this.username = username;
     }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
 
     public String getTitle() {
         return title;

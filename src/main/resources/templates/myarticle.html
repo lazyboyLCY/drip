@@ -97,7 +97,7 @@
                                         <!--修改删除-->
 
                                         <td>
-                                            <button class="layui-btn layui-btn-danger"
+                                            <button class="layui-btn layui-btn-danger" lay-submit
                                                     th:onclick="'showDelete('+${article.id}+')'">删除
                                             </button>
                                         </td>
@@ -133,13 +133,13 @@
     });
 
     function showDelete(id) {
-        var data={"id":id}
+        var data={id:id} //JS里定义对象
         layui.jquery.ajax({
             type:"POST",
             url:"/publicarticle/deleteArticle",
             async: false, //改为同步请求
             contentType:'application/json;charset=UTF-8',
-            data:JSON.stringify(data.field),
+            data:JSON.stringify(data),
             dataType:'json',
             success:function(data){
                 if(data){

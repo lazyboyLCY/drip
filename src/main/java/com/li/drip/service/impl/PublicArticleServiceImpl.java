@@ -24,7 +24,9 @@ public class PublicArticleServiceImpl implements PublicArticleService {
     public Boolean saveArticle(Article article, HttpServletRequest request) {
         //得到session
        article.setUsername((String) request.getSession().getAttribute("username"));
-        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date data = new Date();//创建时间对象
+        String date = simpleDateFormat.format(data);
         article.setCreateTime(date);
         return publicArticleDao.saveArticle(article);
     }

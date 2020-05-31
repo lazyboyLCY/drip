@@ -1,7 +1,6 @@
 package com.li.drip.entity;
 
 public class User {
-    private int num;
     private int uid;
     private String username;
     private String password;
