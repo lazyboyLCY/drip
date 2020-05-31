@@ -22,7 +22,7 @@ public interface PublicArticleDao {
      * @date 2020-05-30
      * 删除文章
     */
-    Boolean deleteArticle(Integer id);
+    Boolean deleteArticle(Article article);
     /**
      * @author LiChenYang
      * @date 2020-05-30

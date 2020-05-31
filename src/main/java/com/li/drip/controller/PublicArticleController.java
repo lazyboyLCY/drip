@@ -1,11 +1,9 @@
 package com.li.drip.controller;
 
 import com.li.drip.entity.Article;
-import com.li.drip.entity.DynamicMood;
 import com.li.drip.service.PublicArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -48,13 +46,12 @@ public class PublicArticleController {
      * @author LiChenYang
      * @date 2020-05-30
      * 删除文章
+     * @return
     */
     @RequestMapping("deleteArticle")
     @ResponseBody
-    public String deleteAreicle(int id){
-        article.setId(id);
-        publicArticleService.deleteArticle(article);
-        return "redirect:/publicarticle/searchArticle";
+    public Boolean deleteArticle(@RequestBody Article article){
+        return publicArticleService.deleteArticle(article);
     }
     /**
      * @author LiChenYang

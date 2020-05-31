@@ -97,7 +97,6 @@
                                         <!--修改删除-->
 
                                         <td>
-                                            <input type="hidden" name="id" th:text="${article.id}">
                                             <button class="layui-btn layui-btn-danger"
                                                     th:onclick="'showDelete('+${article.id}+')'">删除
                                             </button>
@@ -131,13 +130,26 @@
         var form = layui.form;
         var layedit = layui.layedit;
         layedit.build('demo');//建立编辑器
-        // form.on('sumbit(delete)', function (data) {
-        //
-        // })
     });
 
     function showDelete(id) {
-        location.href = "/publicarticle/deleteAritcle?id=" + id;
+        var data={"id":id}
+        layui.jquery.ajax({
+            type:"POST",
+            url:"/publicarticle/deleteArticle",
+            async: false, //改为同步请求
+            contentType:'application/json;charset=UTF-8',
+            data:JSON.stringify(data.field),
+            dataType:'json',
+            success:function(data){
+                if(data){
+                    //layer.msg('用户名或密码正确');
+                    location.href="/publicarticle/searchArticle";
+                }else{
+                    layer.msg('删除失败');
+                }
+            }
+        });
     }
 </script>
 </body>

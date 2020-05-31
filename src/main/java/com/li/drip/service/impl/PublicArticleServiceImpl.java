@@ -31,7 +31,7 @@ public class PublicArticleServiceImpl implements PublicArticleService {
 
     @Override
     public Boolean deleteArticle(Article article) {
-        return publicArticleDao.deleteArticle(article.getId());
+        return publicArticleDao.deleteArticle(article);
     }
 
     @Override
