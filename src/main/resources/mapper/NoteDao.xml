@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.li.drip.dao.NoteDao">
+    <insert id="saveNote">
+    insert into note(n_time,n_senduser,n_title,n_message) values (#{createTime},#{username},#{title},#{message})
+    </insert>
+    <delete id="deleteNote">
+        delete from note where id=#{id}
+    </delete>
+    <select id="searchNote" resultType="com.li.drip.entity.Note">
+        select id as id,n_time as createTime,n_senduser as username,n_title as title,n_message as message
+        from note
+        <where>
+            <if test="username!=null and username !=''">
+                n_senduser =#{username}
+            </if>
+        </where>
+    </select>
+</mapper>
