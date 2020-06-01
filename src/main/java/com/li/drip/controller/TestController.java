@@ -19,7 +19,7 @@ public class TestController {
 
     @RequestMapping("/testpage")
     public ModelAndView index() {
-        ModelAndView mv = new ModelAndView("takenotes");
+        ModelAndView mv = new ModelAndView("sharebook");
         return mv;
     }
 }

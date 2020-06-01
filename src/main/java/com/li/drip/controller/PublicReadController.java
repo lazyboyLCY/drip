@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.List;
 public class PublicReadController {
     @Autowired
     private PublicReadService publicReadService;
+
     @RequestMapping("saveRead")
     @ResponseBody
     public Boolean saveRead(@RequestBody Read read, HttpServletRequest request){
@@ -33,7 +35,12 @@ public class PublicReadController {
     }
     @RequestMapping("searchRead")
     @ResponseBody
-    public List<Read> searchRead(@RequestBody Read read){
-        return publicReadService.searchRead(read);
+    public ModelAndView searchRead(Read read,HttpServletRequest request){
+        ModelAndView mv = new ModelAndView("sharebook");
+        String username= (String) request.getSession().getAttribute("username");
+        List<Read> dm=publicReadService.searchRead(read);
+        mv.addObject("list", dm);
+        mv.addObject("username",username);
+        return mv;
     }
 }

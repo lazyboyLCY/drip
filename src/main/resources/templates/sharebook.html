@@ -2,10 +2,8 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>我的资料</title>
+    <title>记录笔记</title>
     <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
-    <!--    引入bootstrap-->
-<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
 
 </head>
 <body class="layui-layout-body layui-bg-gray">
@@ -19,14 +17,6 @@
             <li class="layui-nav-item"><a href="">经验分享平台</a></li>
             <li class="layui-nav-item"><a href="">图书分享平台</a></li>
             <li class="layui-nav-item"><a href="">互助中心</a></li>
-            <!--            <li class="layui-nav-item">-->
-            <!--                <a href="javascript:;">列表</a>-->
-            <!--                <dl class="layui-nav-child">-->
-            <!--                    <dd><a href="">行1</a></dd>-->
-            <!--                    <dd><a href="">行2</a></dd>-->
-            <!--                    <dd><a href="">行3</a></dd>-->
-            <!--                </dl>-->
-            <!--            </li>-->
         </ul>
         <ul class="layui-nav layui-layout-right layui-bg-green">
             <!--个人头像-->
@@ -54,14 +44,19 @@
                     <a href="javascript:;">文章模块</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:location.href='/publicarticle/testpublicarticle';">发布文章</a></dd>
-                        <dd><a href="javascript:location.href='/publicarticle/searchArticle';">我的文章</a></dd>
+                        <dd><a href="javascript:location.href='/publicnote/mynote';">我的文章</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item layui-bg-green"><a href="">新增笔记</a></li>
+                <li class="layui-nav-item layui-bg-green">
+                    <a href="javascript:;">笔记模块</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:location.href='/publicnote/testpublicnote';">记录笔记</a></dd>
+                        <dd><a href="javascript:location.href='/publicnote/searchNote';">我的笔记</a></dd>
+                    </dl>
+                </li>
                 <li class="layui-nav-item layui-bg-green"><a href="/msgboard/searchMessage">芬芳留言板</a></li>
-                <li class="layui-nav-item layui-bg-green"><a href="">发表读书分享</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="/read/searchRead">发表读书分享</a></li>
                 <li class="layui-nav-item layui-bg-green"><a href="">发布消息</a></li>
-                <!--layui-nav-itemed-->
             </ul>
         </div>
     </div>
@@ -71,44 +66,74 @@
         <div style="padding: 15px;">
             <div class="main">
                 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;margin-bottom: 0px">
-                    <legend>发布文章</legend>
+                    <legend>添加留言</legend>
                 </fieldset>
 
-                <div style="padding: 20px; padding-top:0px;background-color: #F2F2F2;">
-                    <div class="layui-row layui-col-space15" style="width: auto;height: auto">
+                <div style="padding: 20px;background-color: #F2F2F2;">
+                    <div class="layui-row layui-col-space15">
                         <div class="layui-col-md12">
                             <div class="layui-card" style="height: auto">
                                 <form class="layui-form" action="">
-                                    <div class="layui-form-item" style="margin:10px;padding: 10px;padding-top: 20px;margin-left: 0px">
-                                        <label class="layui-form-label">标题</label>
-                                        <div class="layui-input-block">
-                                            <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
-                                        </div>
-                                    </div>
+                                    <div class="layui-card-body" style="height: auto">
+                                        <div style="padding-top: 10px">
+                                            <div class="layui-form-item layui-form-text">
 
-                                    <div class="layui-form-item layui-form-text" style="margin:10px;padding: 10px;margin-left: 0px">
-                                        <label class="layui-form-label">内容</label>
-                                        <div class="layui-input-block">
-                                            <textarea id="demo" name="message" lay-verify="content" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                                    <div class="layui-input-block" style="margin-left: 0px">
+                                                        <input type="text" name="title" required lay-verify="required"
+                                                               placeholder="书目名称" autocomplete="off" class="layui-input">
+                                                    </div>
+
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="layui-form-item">
-                                        <div class="layui-input-block" style="margin:10px;padding: 10px;margin-left: 150px;padding-bottom: 20px">
-                                            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-                                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                        <div style="padding-top: 10px">
+                                            <div class="layui-form-item layui-form-text">
+                                                <div class="layui-input-block" style="margin-left: 0px">
+                                                    <textarea name="message" placeholder="请输入分享内容"
+                                                              class="layui-textarea"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <div class="layui-input-block" style="margin-left: 0px">
+                                                <button class="layui-btn" lay-submit lay-filter="formDemo">发表</button>
+                                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
-
-                                <!--表单-->
                             </div>
                         </div>
+
                     </div>
                 </div>
+                <div style="padding: 20px;background-color: #F2F2F2;">
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md12">
+                            <div class="layui-card" style="height: auto">
+                                <ul th:each="message,iterStat :${list}" style="list-style:none">
+                                    <li class="layui-col-md12">
+                                        <dl class="layui-card">
+                                            <dd th:text="'用户名   :'+${message.username}" class="layui-card-body"></dd>
+                                            <dd th:text="'发布时间   :'+${message.createTime}" class="layui-card-body"></dd>
+<!--                                            <dd th:text="'标题:   '+${message.title}" class="layui-card-body"></dd>-->
+                                            <dd th:text="'留言内容:   '+${message.message}" class="layui-card-body"></dd>
+                                            <hr th:text="''" class="layui-bg-gray">
+                                        </dl>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
             </div>
         </div>
+
     </div>
-</div>
+
 </div>
 <div class="layui-footer">
     <!-- 底部固定区域 -->
@@ -118,39 +143,20 @@
 <script th:src="@{/layui/layui.js}"></script>
 <script>
     //JavaScript代码区域
-    layui.use(['element', 'layer', 'form','layedit'], function () {
+    layui.use(['element', 'layer', 'form', 'layedit'], function () {
         var element = layui.element;
         var layer = layui.layer;
         var form = layui.form;
-        var layedit = layui.layedit;
-        var index=layedit.build('demo', {
-            height: 400,//设置编辑器高度
-            tool: ['strong' //加粗
-                ,'italic' //斜体
-                ,'underline' //下划线
-                ,'del' //删除线
-                ,'|' //分割线
-                ,'left' //左对齐
-                ,'center' //居中对齐
-                ,'right' //右对齐
-                ,'face' //表情
-            ] //设置功能列表
-        });//建立编辑器
-        form.verify({
-            content:function () {
-                layedit.sync(index);
-            }
-        })
         form.on('submit(formDemo)', function (data) {
             layui.jquery.ajax({
                 type: "POST",
-                url: "/publicarticle/saveArticle",
+                url: "/read/saveRead",
                 async: false, //改为同步请求
                 contentType: 'application/json;charset=UTF-8',
                 data: JSON.stringify(data.field),
                 success: function (data) {
                     if (data) {
-                        location.href = "/publicarticle/searchArticle";
+                        location.href = "/read/searchRead";
                     } else {
                         layer.msg('修改失败');
                     }

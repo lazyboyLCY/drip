@@ -8,6 +8,6 @@ import java.util.List;
 @Repository
 public interface PublicReadDao {
     Boolean saveRead(Read read);
-    Boolean deleteRead(Integer id);
+    Boolean deleteRead(Read read);
     List<Read> searchRead(Read read);
 }

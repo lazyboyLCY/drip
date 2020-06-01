@@ -31,7 +31,7 @@ public class PublicReadServiceImpl implements PublicReadService {
 
     @Override
     public Boolean deleteRead(Read read) {
-        return publicReadDao.deleteRead(read.getId());
+        return publicReadDao.deleteRead(read);
     }
 
     @Override
