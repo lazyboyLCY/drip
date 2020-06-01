@@ -18,22 +18,22 @@ import java.util.List;
  * @date 2020-05-31 15:26
  */
 @Controller
-@RequestMapping("read")
+@RequestMapping("/read")
 public class PublicReadController {
     @Autowired
     private PublicReadService publicReadService;
 
-    @RequestMapping("saveRead")
+    @RequestMapping("/saveRead")
     @ResponseBody
     public Boolean saveRead(@RequestBody Read read, HttpServletRequest request){
         return publicReadService.saveRead(read,request);
     }
-    @RequestMapping("deleteRead")
+    @RequestMapping("/deleteRead")
     @ResponseBody
     public Boolean deleteRead(@RequestBody Read read){
         return publicReadService.deleteRead(read);
     }
-    @RequestMapping("searchRead")
+    @RequestMapping("/searchRead")
     @ResponseBody
     public ModelAndView searchRead(Read read,HttpServletRequest request){
         ModelAndView mv = new ModelAndView("sharebook");

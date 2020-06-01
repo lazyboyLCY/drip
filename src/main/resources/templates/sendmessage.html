@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>记录笔记</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+
+</head>
+<body class="layui-layout-body layui-bg-gray">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header layui-bg-green">
+        <div class="layui-logo">
+            <img src="/img/logo2zuhe2.png" style="height:90%;width:90%"></div>
+        <ul class="layui-nav layui-layout-left layui-bg-green">
+            <li class="layui-nav-item"><a href="">动态广场</a></li>
+            <li class="layui-nav-item"><a href="">文章展示</a></li>
+            <li class="layui-nav-item"><a href="">经验分享平台</a></li>
+            <li class="layui-nav-item"><a href="">图书分享平台</a></li>
+            <li class="layui-nav-item"><a href="">互助中心</a></li>
+        </ul>
+        <ul class="layui-nav layui-layout-right layui-bg-green">
+            <!--个人头像-->
+            <li class="layui-nav-item">
+                <a href="javascript:;" th:text="${username}">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">退出</a></li>
+        </ul>
+    </div>
+
+    <!--    侧边栏-->
+    <div class="layui-side layui-bg-green">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-bg-green"><a href="/personaldata/searchpersonaldata">修改个人资料</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="/dynamicmood/searchdynamicmood">发布动态心情</a></li>
+                <li class="layui-nav-item layui-bg-green">
+                    <a href="javascript:;">文章模块</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:location.href='/publicarticle/testpublicarticle';">发布文章</a></dd>
+                        <dd><a href="javascript:location.href='/publicnote/mynote';">我的文章</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-bg-green">
+                    <a href="javascript:;">笔记模块</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:location.href='/publicnote/testpublicnote';">记录笔记</a></dd>
+                        <dd><a href="javascript:location.href='/publicnote/searchNote';">我的笔记</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-bg-green"><a href="/msgboard/searchMessage">芬芳留言板</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="/read/searchRead">发表读书分享</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="/information/searchInformation">发布消息</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <div class="main">
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;margin-bottom: 0px">
+                    <legend>添加留言</legend>
+                </fieldset>
+
+                <div style="padding: 20px;background-color: #F2F2F2;">
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md12">
+                            <div class="layui-card" style="height: auto">
+                                <form class="layui-form" action="">
+                                    <div class="layui-card-body" style="height: auto">
+                                        <div style="padding-top: 10px">
+                                            <div class="layui-form-item layui-form-text">
+
+                                                    <div class="layui-input-block" style="margin-left: 0px">
+                                                        <input type="text" name="title" required lay-verify="required"
+                                                               placeholder="书目名称" autocomplete="off" class="layui-input">
+                                                    </div>
+
+                                            </div>
+                                        </div>
+                                        <div style="padding-top: 10px">
+                                            <div class="layui-form-item layui-form-text">
+                                                <div class="layui-input-block" style="margin-left: 0px">
+                                                    <textarea name="message" placeholder="请输入分享内容"
+                                                              class="layui-textarea"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <div class="layui-input-block" style="margin-left: 0px">
+                                                <button class="layui-btn" lay-submit lay-filter="formDemo">发表</button>
+                                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div style="padding: 20px;background-color: #F2F2F2;">
+                    <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md12">
+                            <div class="layui-card" style="height: auto">
+                                <ul th:each="message,iterStat :${list}" style="list-style:none">
+                                    <li class="layui-col-md12">
+                                        <dl class="layui-card">
+                                            <dd th:text="'用户名   :'+${message.username}" class="layui-card-body"></dd>
+                                            <dd th:text="'发布时间   :'+${message.createTime}" class="layui-card-body"></dd>
+<!--                                            <dd th:text="'标题:   '+${message.title}" class="layui-card-body"></dd>-->
+                                            <dd th:text="'留言内容:   '+${message.message}" class="layui-card-body"></dd>
+                                            <hr th:text="''" class="layui-bg-gray">
+                                        </dl>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="layui-footer">
+    <!-- 底部固定区域 -->
+    ©licy 动态心情
+</div>
+</div>
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    //JavaScript代码区域
+    layui.use(['element', 'layer', 'form', 'layedit'], function () {
+        var element = layui.element;
+        var layer = layui.layer;
+        var form = layui.form;
+        form.on('submit(formDemo)', function (data) {
+            layui.jquery.ajax({
+                type: "POST",
+                url: "/information/saveInformation",
+                async: false, //改为同步请求
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify(data.field),
+                success: function (data) {
+                    if (data) {
+                        location.href = "/information/searchInformation";
+                    } else {
+                        layer.msg('修改失败');
+                    }
+                }
+            });
+            return false;
+        });
+    });
+
+</script>
+</body>
+</html>

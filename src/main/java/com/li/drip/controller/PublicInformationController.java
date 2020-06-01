@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -33,7 +34,13 @@ public class PublicInformationController {
     }
     @RequestMapping("searchInformation")
     @ResponseBody
-    public List<Information> searchInformation(@RequestBody Information information){
-        return publicInformationService.searchInformation(information);
+    public ModelAndView searchInformation(Information information,HttpServletRequest request){
+            ModelAndView mv = new ModelAndView("sendmessage");
+            String username= (String) request.getSession().getAttribute("username");
+            List<Information> dm=publicInformationService.searchInformation(information);
+            mv.addObject("list", dm);
+            mv.addObject("username",username);
+            return mv;
+        }
     }
-}
+

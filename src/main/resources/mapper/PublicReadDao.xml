@@ -11,7 +11,7 @@
     </delete>
     <select id="searchRead" resultType="com.li.drip.entity.Read">
         select id as id,r_time as createTime,r_senduser as username,r_title as title,r_message as message
-        from read
+        from book
         <where>
             <if test="username!=null and username !=''">
                 r_senduser =#{username}
