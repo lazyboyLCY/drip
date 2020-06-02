@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/test")//登录
 public class TestController {
     @Autowired
-    TestService testService;
+    private TestService testService;
     @RequestMapping("/testpage")
     public ModelAndView index() {
         ModelAndView mv = new ModelAndView("sharebook");

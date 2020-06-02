@@ -5,7 +5,9 @@ import com.li.drip.dao.*;
 import com.li.drip.entity.*;
 import com.li.drip.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TestServiceImpl implements TestService {
     @Autowired
     private PublicArticleDao publicArticleDao;
@@ -17,6 +19,7 @@ public class TestServiceImpl implements TestService {
     private ExperienceDao experienceDao;
     @Autowired
     private DynamicmoodDao dynamicmoodDao;
+
     @Override
     public AllParam searchAllParam() {
         AllParam allParam = new AllParam();
