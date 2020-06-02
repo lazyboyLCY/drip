@@ -14,7 +14,7 @@
         <ul class="layui-nav layui-layout-left layui-bg-green">
             <li class="layui-nav-item"><a href="">动态广场</a></li>
             <li class="layui-nav-item"><a href="">文章展示</a></li>
-            <li class="layui-nav-item"><a href="">经验分享平台</a></li>
+            <li class="layui-nav-item"><a href="">芬芳留言板</a></li>
             <li class="layui-nav-item"><a href="">图书分享平台</a></li>
             <li class="layui-nav-item"><a href="">互助中心</a></li>
         </ul>
@@ -66,7 +66,7 @@
         <div style="padding: 15px;">
             <div class="main">
                 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;margin-bottom: 0px">
-                    <legend>添加留言</legend>
+                    <legend>发布互助消息</legend>
                 </fieldset>
 
                 <div style="padding: 20px;background-color: #F2F2F2;">
@@ -78,17 +78,17 @@
                                         <div style="padding-top: 10px">
                                             <div class="layui-form-item layui-form-text">
 
-                                                    <div class="layui-input-block" style="margin-left: 0px">
-                                                        <input type="text" name="title" required lay-verify="required"
-                                                               placeholder="书目名称" autocomplete="off" class="layui-input">
-                                                    </div>
+                                                <div class="layui-input-block" style="margin-left: 0px">
+                                                    <input type="text" name="title" required lay-verify="required"
+                                                           placeholder="互助标题" autocomplete="off" class="layui-input">
+                                                </div>
 
                                             </div>
                                         </div>
                                         <div style="padding-top: 10px">
                                             <div class="layui-form-item layui-form-text">
                                                 <div class="layui-input-block" style="margin-left: 0px">
-                                                    <textarea name="message" placeholder="请输入分享内容"
+                                                    <textarea name="message" placeholder="请输入需要发布的消息"
                                                               class="layui-textarea"></textarea>
                                                 </div>
                                             </div>
@@ -115,8 +115,8 @@
                                         <dl class="layui-card">
                                             <dd th:text="'用户名   :'+${message.username}" class="layui-card-body"></dd>
                                             <dd th:text="'发布时间   :'+${message.createTime}" class="layui-card-body"></dd>
-<!--                                            <dd th:text="'标题:   '+${message.title}" class="layui-card-body"></dd>-->
-                                            <dd th:text="'留言内容:   '+${message.message}" class="layui-card-body"></dd>
+                                            <dd th:text="'标题:   '+${message.title}" class="layui-card-body"></dd>
+                                            <dd th:text="'消息内容:   '+${message.message}" class="layui-card-body"></dd>
                                             <hr th:text="''" class="layui-bg-gray">
                                         </dl>
                                     </li>
@@ -133,13 +133,13 @@
         </div>
 
     </div>
+    <div class="layui-footer" style="background-color: white">
+        <!-- 底部固定区域 -->
+        ©licy 发布互助消息
+    </div>
 
 </div>
-<div class="layui-footer">
-    <!-- 底部固定区域 -->
-    ©licy 动态心情
-</div>
-</div>
+
 <script th:src="@{/layui/layui.js}"></script>
 <script>
     //JavaScript代码区域
