@@ -2,7 +2,7 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>个人主页</title>
+    <title>公共主页</title>
     <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
 </head>
 <body class="layui-layout-body">
@@ -14,19 +14,11 @@
             </a>
         </div>
         <ul class="layui-nav layui-layout-left layui-bg-green">
-            <li class="layui-nav-item"><a href="">动态广场</a></li>
-            <li class="layui-nav-item"><a href="">文章展示</a></li>
-            <li class="layui-nav-item"><a href="">经验分享平台</a></li>
-            <li class="layui-nav-item"><a href="">图书分享平台</a></li>
-            <li class="layui-nav-item"><a href="">互助中心</a></li>
-            <!--            <li class="layui-nav-item">-->
-            <!--                <a href="javascript:;">列表</a>-->
-            <!--                <dl class="layui-nav-child">-->
-            <!--                    <dd><a href="">行1</a></dd>-->
-            <!--                    <dd><a href="">行2</a></dd>-->
-            <!--                    <dd><a href="">行3</a></dd>-->
-            <!--                </dl>-->
-            <!--            </li>-->
+            <li class="layui-nav-item"><a href="#dynamicmao">动态广场</a></li>
+            <li class="layui-nav-item"><a href="#articlemao">文章展示</a></li>
+            <li class="layui-nav-item"><a href="#messagemao">芬芳留言板</a></li>
+            <li class="layui-nav-item"><a href="#readmao">图书分享平台</a></li>
+            <li class="layui-nav-item"><a href="#informationmao">互助中心</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right layui-bg-green">
             <!--个人头像-->
@@ -35,11 +27,11 @@
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
-                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="/personaldata/searchpersonaldata">基本资料</a></dd>
+                    <dd><a href="/personalpage/testpersonalpage">公共主页</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">退出</a></li>
+            <li class="layui-nav-item"><a href="/login/logout">退出</a></li>
         </ul>
     </div>
 
@@ -54,28 +46,26 @@
                     <a href="javascript:;">文章模块</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:location.href='/publicarticle/testpublicarticle';">发布文章</a></dd>
-                        <dd><a href="javascript:location.href='/publicarticle/myarticle';">我的文章</a></dd>
+                        <dd><a href="javascript:location.href='/publicarticle/searchArticle';">我的文章</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item layui-bg-green">
                     <a href="javascript:;">笔记模块</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:location.href='/publicnote/testpublicnote';">发布文章</a></dd>
-                        <dd><a href="javascript:location.href='/publicnote/mynote';">我的文章</a></dd>
+                        <dd><a href="javascript:location.href='/publicnote/testpublicnote';">记录笔记</a></dd>
+                        <dd><a href="javascript:location.href='/publicnote/searchNote';">我的笔记</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item layui-bg-green"><a href="/msgboard/searchMessage">芬芳留言板</a></li>
-                <li class="layui-nav-item layui-bg-green"><a href="">发表读书分享</a></li>
-                <li class="layui-nav-item layui-bg-green"><a href="">发布消息</a></li>
-                <!--layui-nav-itemed-->
-
-
+                <li class="layui-nav-item layui-bg-green"><a href="/read/searchRead">发表读书分享</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="/information/searchInformation">发布消息</a></li>
             </ul>
         </div>
     </div>
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
+        <div id="lunbo"></div>
         <div style="padding: 15px;background-color:	#e2e2e2">
             <div class="layui-carousel" id="test1" style="margin: 0 auto">
                 <div carousel-item style="">
@@ -101,306 +91,280 @@
         <!-- 条目中可以是任意内容，如：<img src=""> -->
         <div class="layui-fluid " style="background-color: #00F7DE">
             <div class="layui-row" style="background-color: #9053c7">
-                <div class="layui-col-lg7 layui-col-lg-offset1" style="background-color: #0000FF">
-                    <div style="padding: 15px;">
-                        <div class="main">
-                            <fieldset class="layui-elem-field layui-field-title"
-                                      style="margin-top: 20px;margin-bottom: 0px">
-                                <legend>我的文章</legend>
-                            </fieldset>
-
-                            <div style="padding: 20px; padding-top:0px;background-color: #F2F2F2;">
-                                <div class="layui-row layui-col-space15" style="width: auto;height: auto">
-                                    <div class="layui-col-md12">
-                                        <div class="layui-card" style="height: auto">
-                                            <table class="table table table-striped table-hover active table-bordered">
-                                                <tr class="info">
-                                                    <th>序号</th>
-                                                    <th>用户名</th>
-                                                    <th>发表时间</th>
-                                                    <th>标题</th>
-                                                    <th>操作</th>
-                                                    <!--                                        <th>文章内容</th>-->
-                                                </tr>
-                                                <tr th:each="article,iterStat :${list}">
-                                                    <td class="danger" th:text="${iterStat.count}"></td>
-                                                    <td th:text="${article.username}"></td>
-                                                    <td th:text="${article.createTime}"></td>
-                                                    <td th:text="${article.title}"></td>
-                                                    <!--修改删除-->
-
-                                                    <td>
-                                                        <button class="layui-btn layui-btn-danger" lay-submit
-                                                                th:onclick="'showDelete('+${article.id}+')'">删除
-                                                        </button>
-                                                    </td>
-
-                                                </tr>
-                                            </table>
-
-
-                                            <!--表格-->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-col-lg3" style="background-color: #00FF00">
-                    <div style="padding: 15px;">
-                        <div class="main">
-                            <fieldset class="layui-elem-field layui-field-title"
-                                      style="margin-top: 20px;margin-bottom: 0px">
-                                <legend>动态心情</legend>
-                            </fieldset>
-
-                            <div style="padding: 20px; padding-top:0px;background-color: #F2F2F2;">
-                                <div class="layui-row layui-col-space15">
-                                    <div class="layui-col-md12">
-                                        <div class="layui-card" style="height: auto;padding: 20px">
-                                            <ul th:each="dynamic,iterStat :${list}" class="layui-timeline"
-                                                style="margin: 0px">
-                                                <li class="layui-timeline-item">
-                                                    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
-                                                    <dl class="layui-timeline-content layui-text">
-                                                        <h3 th:text="'发布时间   :'+${dynamic.sendtime}"
-                                                            class="layui-timeline-title"></h3>
-                                                        <h5 th:text="'用户名   :'+${dynamic.username}"></h5>
-                                                        <h5 th:text="'标题:   '+${dynamic.title}"></h5>
-                                                        <p th:text="'动态:   '+${dynamic.message}"></p>
-                                                    </dl>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-row" style="background-color: #9053c7">
-                <div class="layui-col-lg7 layui-col-lg-offset1" style="background-color: #0000FF">
-                    <div class="main">
-                        <div style="padding: 15px;">
-                            <fieldset class="layui-elem-field layui-field-title"
-                                      style="margin-top: 20px;margin-bottom: 0px">
-                                <legend>读书分享</legend>
-                            </fieldset>
-                            <div style="padding: 20px;background-color: #F2F2F2;">
-                                <div class="layui-row layui-col-space15">
-                                    <div class="layui-col-md12">
-                                        <div class="layui-card" style="height: auto">
-                                            <ul th:each="message,iterStat :${list}" style="list-style:none">
-                                                <li class="layui-col-md12">
-                                                    <dl class="layui-card">
-                                                        <dd th:text="'用户名   :'+${message.username}"
-                                                            class="layui-card-body"></dd>
-                                                        <dd th:text="'发布时间   :'+${message.createTime}"
-                                                            class="layui-card-body"></dd>
-                                                        <!--                                            <dd th:text="'标题:   '+${message.title}" class="layui-card-body"></dd>-->
-                                                        <dd th:text="'留言内容:   '+${message.message}"
-                                                            class="layui-card-body"></dd>
-                                                        <hr th:text="''" class="layui-bg-gray">
-                                                    </dl>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-col-lg3" style="background-color: #00FF00">
-                    <div style="padding: 15px;">
-                        <div class="main">
-                            <fieldset class="layui-elem-field layui-field-title"
-                                      style="margin-top: 20px;margin-bottom: 0px">
-                                <legend>芬芳留言板</legend>
-                            </fieldset>
-                            <div style="padding: 20px;background-color: #F2F2F2;">
-                                <div class="layui-row layui-col-space15">
-                                    <div class="layui-col-md12">
-                                        <div class="layui-card" style="height: auto">
-                                            <ul th:each="message,iterStat :${list}" style="list-style:none">
-                                                <li class="layui-col-md12">
-                                                    <dl class="layui-card">
-                                                        <dd th:text="'用户名   :'+${message.username}"
-                                                            class="layui-card-body"></dd>
-                                                        <dd th:text="'发布时间   :'+${message.createTime}"
-                                                            class="layui-card-body"></dd>
-                                                        <!--                                            <dd th:text="'标题:   '+${message.title}" class="layui-card-body"></dd>-->
-                                                        <dd th:text="'留言内容:   '+${message.message}"
-                                                            class="layui-card-body"></dd>
-                                                        <hr th:text="''" class="layui-bg-gray">
-                                                    </dl>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="layui-row" style="background-color: #9053c7">
-                <div class="layui-col-lg7 layui-col-lg-offset1" style="background-color: #0000FF">
-                    <div style="padding: 15px;">
-                        <div class="main">
-                            <fieldset class="layui-elem-field layui-field-title"
-                                      style="margin-top: 20px;margin-bottom: 0px">
-                                <legend>发布互助消息</legend>
-                            </fieldset>
-
-                            <div style="padding: 20px;background-color: #F2F2F2;">
-                                <div class="layui-row layui-col-space15">
-                                    <div class="layui-col-md12">
-                                        <div class="layui-card" style="height: auto">
-                                            <form class="layui-form" action="">
-                                                <div class="layui-card-body" style="height: auto">
-                                                    <div style="padding-top: 10px">
-                                                        <div class="layui-form-item layui-form-text">
-
-                                                            <div class="layui-input-block" style="margin-left: 0px">
-                                                                <input type="text" name="title" required
-                                                                       lay-verify="required"
-                                                                       placeholder="互助标题" autocomplete="off"
-                                                                       class="layui-input">
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div style="padding-top: 10px">
-                                                        <div class="layui-form-item layui-form-text">
-                                                            <div class="layui-input-block" style="margin-left: 0px">
-                                                    <textarea name="message" placeholder="请输入需要发布的消息"
-                                                              class="layui-textarea"></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="layui-form-item">
-                                                        <div class="layui-input-block" style="margin-left: 0px">
-                                                            <button class="layui-btn" lay-submit lay-filter="formDemo">
-                                                                发表
-                                                            </button>
-                                                            <button type="reset" class="layui-btn layui-btn-primary">
-                                                                重置
-                                                            </button>
-                                                        </div>
-                                                    </div>
+                <div class="layui-col-lg8 " style="background-color: #0000FF">
+                    <div class="layui-row" style="background-color: #9053c7">
+                        <div class="layui-col-lg12 " style="background-color: #0000FF">
+                            <!--文章模块-->
+                            <div id="articlemao"></div>
+                            <div style="padding: 15px;">
+                                <div class="main">
+                                    <fieldset class="layui-elem-field layui-field-title"
+                                              style="margin-top: 20px;margin-bottom: 0px">
+                                        <legend>我的文章</legend>
+                                    </fieldset>
+                                    <div style="padding: 20px;background-color: #F2F2F2;">
+                                        <div class="layui-row layui-col-space15">
+                                            <div class="layui-col-md12">
+                                                <div class="layui-card" style="height: auto">
+                                                    <ul th:each="articles,iterStat :${paramarticles}"
+                                                        style="list-style:none">
+                                                        <li class="layui-col-md12">
+                                                            <dl class="layui-card">
+                                                                <dd th:text="'用户名   :'+${articles.username}"
+                                                                    class="layui-card-body"></dd>
+                                                                <dd th:text="'发布时间   :'+${articles.createTime}"
+                                                                    class="layui-card-body"></dd>
+                                                                <dd th:text="'标题:   '+${articles.title}"
+                                                                    class="layui-card-body"></dd>
+                                                                <dd th:text="'文章内容:   '+${articles.message}"
+                                                                    class="layui-card-body"></dd>
+                                                                <hr th:text="''" class="layui-bg-gray">
+                                                            </dl>
+                                                        </li>
+                                                    </ul>
                                                 </div>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-                            <div style="padding: 20px;background-color: #F2F2F2;">
-                                <div class="layui-row layui-col-space15">
-                                    <div class="layui-col-md12">
-                                        <div class="layui-card" style="height: auto">
-                                            <ul th:each="message,iterStat :${list}" style="list-style:none">
-                                                <li class="layui-col-md12">
-                                                    <dl class="layui-card">
-                                                        <dd th:text="'用户名   :'+${message.username}"
-                                                            class="layui-card-body"></dd>
-                                                        <dd th:text="'发布时间   :'+${message.createTime}"
-                                                            class="layui-card-body"></dd>
-                                                        <dd th:text="'标题:   '+${message.title}"
-                                                            class="layui-card-body"></dd>
-                                                        <dd th:text="'消息内容:   '+${message.message}"
-                                                            class="layui-card-body"></dd>
-                                                        <hr th:text="''" class="layui-bg-gray">
-                                                    </dl>
-                                                </li>
-                                            </ul>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
                         </div>
                     </div>
-                </div>
-                <div class="layui-col-lg3" style="background-color: #00FF00">
-                    <div style="padding: 15px;">
-                        <div class="main">
-                            <div class="layui-card">
-                                <div class="layui-card-header">本周活跃用户列表</div>
-                                <div class="layui-card-body">
-                                    <table class="layui-table layuiadmin-page-table" lay-skin="line">
-                                        <thead>
-                                        <tr>
-                                            <th>用户名</th>
-                                            <th>最后登录时间</th>
-                                            <th>状态</th>
-                                            <th>获得赞</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td><span class="first">胡歌</span></td>
-                                            <td><i class="layui-icon layui-icon-log"> 11:20</i></td>
-                                            <td><span>在线</span></td>
-                                            <td>22 <i class="layui-icon layui-icon-praise"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="second">彭于晏</span></td>
-                                            <td><i class="layui-icon layui-icon-log"> 10:40</i></td>
-                                            <td><span>在线</span></td>
-                                            <td>21 <i class="layui-icon layui-icon-praise"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="third">靳东</span></td>
-                                            <td><i class="layui-icon layui-icon-log"> 01:30</i></td>
-                                            <td><i>离线</i></td>
-                                            <td>66 <i class="layui-icon layui-icon-praise"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>吴尊</td>
-                                            <td><i class="layui-icon layui-icon-log"> 21:18</i></td>
-                                            <td><i>离线</i></td>
-                                            <td>45 <i class="layui-icon layui-icon-praise"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>许上进</td>
-                                            <td><i class="layui-icon layui-icon-log"> 09:30</i></td>
-                                            <td><span>在线</span></td>
-                                            <td>21 <i class="layui-icon layui-icon-praise"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>小蚊子</td>
-                                            <td><i class="layui-icon layui-icon-log"> 21:18</i></td>
-                                            <td><i>在线</i></td>
-                                            <td>45 <i class="layui-icon layui-icon-praise"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>贤心</td>
-                                            <td><i class="layui-icon layui-icon-log"> 09:30</i></td>
-                                            <td><span>在线</span></td>
-                                            <td>21 <i class="layui-icon layui-icon-praise"></i></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                    <div class="layui-row" style="background-color: #9053c7">
+                        <div class="layui-col-lg12 " style="background-color: #0000FF">
+                            <!--读书分享-->
+                            <div id="readmao"></div>
+                            <div  class="main">
+                                <div style="padding: 15px;">
+                                    <fieldset class="layui-elem-field layui-field-title"
+                                              style="margin-top: 20px;margin-bottom: 0px">
+                                        <legend>读书分享</legend>
+                                    </fieldset>
+                                    <div style="padding: 20px;background-color: #F2F2F2;">
+                                        <div class="layui-row layui-col-space15">
+                                            <div class="layui-col-md12">
+                                                <div class="layui-card" style="height: auto">
+                                                    <ul th:each="books,iterStat :${parambooks}" style="list-style:none">
+                                                        <li class="layui-col-md12">
+                                                            <dl class="layui-card">
+                                                                <dd th:text="'用户名   :'+${books.username}"
+                                                                    class="layui-card-body"></dd>
+                                                                <dd th:text="'发布时间   :'+${books.createTime}"
+                                                                    class="layui-card-body"></dd>
+                                                                <dd th:text="'书名:   '+${books.title}"
+                                                                    class="layui-card-body"></dd>
+                                                                <dd th:text="'留言内容:   '+${books.message}"
+                                                                    class="layui-card-body"></dd>
+                                                                <hr th:text="''" class="layui-bg-gray">
+                                                            </dl>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row" style="background-color: #9053c7">
+                        <div class="layui-col-lg12 " style="background-color: #0000FF">
+                            <!--发布互助消息-->
+                            <div id="informationmao"></div>
+                            <div style="padding: 15px;">
+                                <div class="main">
+                                    <fieldset class="layui-elem-field layui-field-title"
+                                              style="margin-top: 20px;margin-bottom: 0px">
+                                        <legend>发布互助消息</legend>
+                                    </fieldset>
+
+                                    <div style="padding: 20px;background-color: #F2F2F2;">
+                                        <div class="layui-row layui-col-space15">
+                                            <div class="layui-col-md12">
+                                                <div class="layui-card" style="height: auto">
+                                                    <ul th:each="information,iterStat :${paraminformation}"
+                                                        style="list-style:none">
+                                                        <li class="layui-col-md12">
+                                                            <dl class="layui-card">
+                                                                <dd th:text="'用户名   :'+${information.username}"
+                                                                    class="layui-card-body"></dd>
+                                                                <dd th:text="'发布时间   :'+${information.createTime}"
+                                                                    class="layui-card-body"></dd>
+                                                                <dd th:text="'标题:   '+${information.title}"
+                                                                    class="layui-card-body"></dd>
+                                                                <dd th:text="'消息内容:   '+${information.message}"
+                                                                    class="layui-card-body"></dd>
+                                                                <hr th:text="''" class="layui-bg-gray">
+                                                            </dl>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="layui-col-lg4" style="background-color: #00FF00">
+                    <div class="layui-row" style="background-color: #9053c7">
+                        <div class="layui-col-lg12" style="background-color: #00FF00">
+                            <!--动态心情-->
+                            <a id="dynamicmao"></a>
+                            <div style="padding: 15px;">
+                                <div class="main">
+                                    <fieldset class="layui-elem-field layui-field-title"
+                                              style="margin-top: 20px;margin-bottom: 0px">
+                                        <legend>动态心情</legend>
+                                    </fieldset>
 
-
-            <div class="layui-footer">
-                <!-- 底部固定区域 -->
-                ©licy dirp点滴
+                                    <div style="padding: 20px; padding-top:0px;background-color: #F2F2F2;">
+                                        <div class="layui-row layui-col-space15">
+                                            <div class="layui-col-md12">
+                                                <div class="layui-card" style="height: auto;padding: 20px">
+                                                    <ul th:each="dynamic,iterStat :${paramdynamicmoods}"
+                                                        class="layui-timeline"
+                                                        style="margin: 0px">
+                                                        <li class="layui-timeline-item">
+                                                            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                                                            <dl class="layui-timeline-content layui-text">
+                                                                <h3 th:text="'发布时间   :'+${dynamic.sendtime}"
+                                                                    class="layui-timeline-title"></h3>
+                                                                <h5 th:text="'用户名   :'+${dynamic.username}"></h5>
+                                                                <h5 th:text="'标题:   '+${dynamic.title}"></h5>
+                                                                <p th:text="'动态:   '+${dynamic.message}"></p>
+                                                            </dl>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row" style="background-color: #9053c7">
+                        <div class="layui-col-lg12" style="background-color: #00FF00">
+                            <!--芬芳留言板-->
+                            <a id="messagemao"></a>
+                            <div style="padding: 15px;">
+                                <div class="main">
+                                    <fieldset class="layui-elem-field layui-field-title"
+                                              style="margin-top: 20px;margin-bottom: 0px">
+                                        <legend>芬芳留言板</legend>
+                                    </fieldset>
+                                    <div style="padding: 20px;background-color: #F2F2F2;">
+                                        <div class="layui-row layui-col-space15">
+                                            <div class="layui-col-md12">
+                                                <div class="layui-card" style="height: auto">
+                                                    <ul th:each="message,iterStat :${parammessages}"
+                                                        style="list-style:none">
+                                                        <li class="layui-col-md12">
+                                                            <dl class="layui-card">
+                                                                <dd th:text="'用户名   :'+${message.username}"
+                                                                    class="layui-card-body"></dd>
+                                                                <dd th:text="'发布时间   :'+${message.createTime}"
+                                                                    class="layui-card-body"></dd>
+                                                                <!--                                            <dd th:text="'标题:   '+${message.title}" class="layui-card-body"></dd>-->
+                                                                <dd th:text="'留言内容:   '+${message.message}"
+                                                                    class="layui-card-body"></dd>
+                                                                <hr th:text="''" class="layui-bg-gray">
+                                                            </dl>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-row" style="background-color: #9053c7">
+                        <div class="layui-col-lg12" style="background-color: #00FF00">
+                            <!--用户活跃-->
+                            <div style="padding: 15px;">
+                                <div class="main">
+                                    <div class="layui-card">
+                                        <div class="layui-card-header">本周活跃用户列表</div>
+                                        <div class="layui-card-body">
+                                            <table class="layui-table layuiadmin-page-table" lay-skin="line">
+                                                <thead>
+                                                <tr>
+                                                    <th>用户名</th>
+                                                    <th>最后登录时间</th>
+                                                    <th>状态</th>
+                                                    <th>获得赞</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td><span class="first">胡歌</span></td>
+                                                    <td><i class="layui-icon layui-icon-log"> 11:20</i></td>
+                                                    <td><span>在线</span></td>
+                                                    <td>22 <i class="layui-icon layui-icon-praise"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="second">彭于晏</span></td>
+                                                    <td><i class="layui-icon layui-icon-log"> 10:40</i></td>
+                                                    <td><span>在线</span></td>
+                                                    <td>21 <i class="layui-icon layui-icon-praise"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="third">靳东</span></td>
+                                                    <td><i class="layui-icon layui-icon-log"> 01:30</i></td>
+                                                    <td><i>离线</i></td>
+                                                    <td>66 <i class="layui-icon layui-icon-praise"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>吴尊</td>
+                                                    <td><i class="layui-icon layui-icon-log"> 21:18</i></td>
+                                                    <td><i>离线</i></td>
+                                                    <td>45 <i class="layui-icon layui-icon-praise"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>许上进</td>
+                                                    <td><i class="layui-icon layui-icon-log"> 09:30</i></td>
+                                                    <td><span>在线</span></td>
+                                                    <td>21 <i class="layui-icon layui-icon-praise"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>小蚊子</td>
+                                                    <td><i class="layui-icon layui-icon-log"> 21:18</i></td>
+                                                    <td><i>在线</i></td>
+                                                    <td>45 <i class="layui-icon layui-icon-praise"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>贤心</td>
+                                                    <td><i class="layui-icon layui-icon-log"> 09:30</i></td>
+                                                    <td><span>在线</span></td>
+                                                    <td>21 <i class="layui-icon layui-icon-praise"></i></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <div class="layui-footer">
+            <a href="#lunbo">
+            <!-- 底部固定区域 -->
+            ©licy dirp点滴
+            </a>
+        </div>
+
         <script th:src="@{/layui/layui.js}"></script>
         <script>
             //JavaScript代码区域
@@ -424,5 +388,7 @@
 
             });
         </script>
+    </div>
+</div>
 </body>
 </html>

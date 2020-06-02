@@ -2,32 +2,23 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>我的资料</title>
+    <title>动态心情</title>
     <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
-    <!--    引入bootstrap-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
 </head>
 <body class="layui-layout-body layui-bg-gray">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header layui-bg-green">
         <div class="layui-logo">
-            <img src="/img/logo2zuhe2.png" style="height:90%;width:90%"></div>
+            <a href="/personalpage/testpersonalpage">
+                <img src="/img/logo2zuhe2.png" style="height:90%;width:90%">
+            </a>
+        </div>
         <ul class="layui-nav layui-layout-left layui-bg-green">
-            <li class="layui-nav-item"><a href="">动态广场</a></li>
-            <li class="layui-nav-item"><a href="">文章展示</a></li>
-            <li class="layui-nav-item"><a href="">芬芳留言板</a></li>
-            <li class="layui-nav-item"><a href="">图书分享平台</a></li>
-            <li class="layui-nav-item"><a href="">互助中心</a></li>
-            <!--            <li class="layui-nav-item">-->
-            <!--                <a href="javascript:;">列表</a>-->
-            <!--                <dl class="layui-nav-child">-->
-            <!--                    <dd><a href="">行1</a></dd>-->
-            <!--                    <dd><a href="">行2</a></dd>-->
-            <!--                    <dd><a href="">行3</a></dd>-->
-            <!--                </dl>-->
-            <!--            </li>-->
+            <li class="layui-nav-item"><a href="/personalpage/testpersonalpage#dynamicmao">动态广场</a></li>
+            <li class="layui-nav-item"><a href="/personalpage/testpersonalpage#articlemao">文章展示</a></li>
+            <li class="layui-nav-item"><a href="/personalpage/testpersonalpage#messagemao">芬芳留言板</a></li>
+            <li class="layui-nav-item"><a href="/personalpage/testpersonalpage#readmao">图书分享平台</a></li>
+            <li class="layui-nav-item"><a href="/personalpage/testpersonalpage#informationmao">互助中心</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right layui-bg-green">
             <!--个人头像-->
@@ -36,11 +27,11 @@
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
-                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="/personaldata/searchpersonaldata">基本资料</a></dd>
+                    <dd><a href="/personalpage/testpersonalpage">公共主页</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">退出</a></li>
+            <li class="layui-nav-item"><a href="/login/logout">退出</a></li>
         </ul>
     </div>
 
@@ -51,21 +42,23 @@
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item layui-bg-green"><a href="/personaldata/searchpersonaldata">修改个人资料</a></li>
                 <li class="layui-nav-item layui-bg-green"><a href="/dynamicmood/searchdynamicmood">发布动态心情</a></li>
-                <li class="layui-nav-item layui-bg-green"><a href="">发布文章</a></li>
-                <li class="layui-nav-item layui-bg-green"><a href="">新增笔记</a></li>
-                <li class="layui-nav-item layui-bg-green"><a href="/msgboard/searchMessage">芬芳留言板</a></li>
-                <li class="layui-nav-item layui-bg-green"><a href="/read/searchRead">发表读书分享</a></li>
-                <li class="layui-nav-item layui-bg-green"><a href="">发布消息</a></li>
-                <!--layui-nav-itemed-->
-                <li class="layui-nav-item  layui-bg-green">
-                    <a href="javascript:;">侧边导航</a>
+                <li class="layui-nav-item layui-bg-green">
+                    <a href="javascript:;">文章模块</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
-                        <dd><a href="">超链接</a></dd>
+                        <dd><a href="javascript:location.href='/publicarticle/testpublicarticle';">发布文章</a></dd>
+                        <dd><a href="javascript:location.href='/publicarticle/searchArticle';">我的文章</a></dd>
                     </dl>
                 </li>
+                <li class="layui-nav-item layui-bg-green">
+                    <a href="javascript:;">笔记模块</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:location.href='/publicnote/testpublicnote';">记录笔记</a></dd>
+                        <dd><a href="javascript:location.href='/publicnote/searchNote';">我的笔记</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-bg-green"><a href="/msgboard/searchMessage">芬芳留言板</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="/read/searchRead">发表读书分享</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="/information/searchInformation">发布消息</a></li>
             </ul>
         </div>
     </div>

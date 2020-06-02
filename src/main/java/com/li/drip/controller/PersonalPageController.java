@@ -18,8 +18,12 @@ public class PersonalPageController {
     public ModelAndView index(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("personalpage");
         String username= (String) request.getSession().getAttribute("username");
-        AllParam allParam = testService.searchAllParam();
-        mv.addObject("param",allParam);
+        AllParam param = testService.searchAllParam();
+        mv.addObject("paramarticles",param.getArticles());
+        mv.addObject("paramdynamicmoods",param.getDynamicMoods());
+        mv.addObject("parambooks",param.getReads());
+        mv.addObject("parammessages",param.getExperiences());
+        mv.addObject("paraminformation",param.getInformations());
         mv.addObject("msg",username);
         return mv;
     }

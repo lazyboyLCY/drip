@@ -7,6 +7,12 @@
         insert into dynamicmood(username,sendtime,title,message)values(#{username},#{sendtime},#{title},#{message})
     </insert>
     <select id="search" resultType="com.li.drip.entity.DynamicMood" parameterType="String" >
-        select username,sendtime,title,message from dynamicmood where username = #{username}
+        select username,sendtime,title,message from dynamicmood
+        <where>
+            <if test="username!=null and username !=''">
+                username =#{username}
+            </if>
+        </where>
+        ORDER BY sendtime DESC
     </select>
 </mapper>

@@ -12,21 +12,16 @@
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header layui-bg-green">
         <div class="layui-logo">
-            <img src="/img/logo2zuhe2.png" style="height:90%;width:90%"></div>
+            <a href="/personalpage/testpersonalpage">
+                <img src="/img/logo2zuhe2.png" style="height:90%;width:90%">
+            </a>
+        </div>
         <ul class="layui-nav layui-layout-left layui-bg-green">
-            <li class="layui-nav-item"><a href="">动态广场</a></li>
-            <li class="layui-nav-item"><a href="">文章展示</a></li>
-            <li class="layui-nav-item"><a href="">经验分享平台</a></li>
-            <li class="layui-nav-item"><a href="">图书分享平台</a></li>
-            <li class="layui-nav-item"><a href="">互助中心</a></li>
-            <!--            <li class="layui-nav-item">-->
-            <!--                <a href="javascript:;">列表</a>-->
-            <!--                <dl class="layui-nav-child">-->
-            <!--                    <dd><a href="">行1</a></dd>-->
-            <!--                    <dd><a href="">行2</a></dd>-->
-            <!--                    <dd><a href="">行3</a></dd>-->
-            <!--                </dl>-->
-            <!--            </li>-->
+            <li class="layui-nav-item"><a href="/personalpage/testpersonalpage#dynamicmao">动态广场</a></li>
+            <li class="layui-nav-item"><a href="/personalpage/testpersonalpage#articlemao">文章展示</a></li>
+            <li class="layui-nav-item"><a href="/personalpage/testpersonalpage#messagemao">芬芳留言板</a></li>
+            <li class="layui-nav-item"><a href="/personalpage/testpersonalpage#readmao">图书分享平台</a></li>
+            <li class="layui-nav-item"><a href="/personalpage/testpersonalpage#informationmao">互助中心</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right layui-bg-green">
             <!--个人头像-->
@@ -35,11 +30,11 @@
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
-                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="/personaldata/searchpersonaldata">基本资料</a></dd>
+                    <dd><a href="/personalpage/testpersonalpage">公共主页</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">退出</a></li>
+            <li class="layui-nav-item"><a href="/login/logout">退出</a></li>
         </ul>
     </div>
 
@@ -57,11 +52,16 @@
                         <dd><a href="javascript:location.href='/publicarticle/searchArticle';">我的文章</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item layui-bg-green"><a href="">新增笔记</a></li>
+                <li class="layui-nav-item layui-bg-green">
+                    <a href="javascript:;">笔记模块</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:location.href='/publicnote/testpublicnote';">记录笔记</a></dd>
+                        <dd><a href="javascript:location.href='/publicnote/searchNote';">我的笔记</a></dd>
+                    </dl>
+                </li>
                 <li class="layui-nav-item layui-bg-green"><a href="/msgboard/searchMessage">芬芳留言板</a></li>
-                <li class="layui-nav-item layui-bg-green"><a href="">发表读书分享</a></li>
-                <li class="layui-nav-item layui-bg-green"><a href="">发布消息</a></li>
-                <!--layui-nav-itemed-->
+                <li class="layui-nav-item layui-bg-green"><a href="/read/searchRead">发表读书分享</a></li>
+                <li class="layui-nav-item layui-bg-green"><a href="/information/searchInformation">发布消息</a></li>
             </ul>
         </div>
     </div>

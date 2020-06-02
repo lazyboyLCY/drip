@@ -29,13 +29,7 @@ public class PublicNoteController {
     mv.addObject("username",username);
     return mv;
   }
-  @RequestMapping("/mynote")
-  public ModelAndView mynote(HttpServletRequest request) {
-    ModelAndView mv = new ModelAndView("mynote");
-    String username= (String) request.getSession().getAttribute("username");
-    mv.addObject("username",username);
-    return mv;
-  }
+
   @RequestMapping("saveNote")
   @ResponseBody
     public Boolean saveNote(@RequestBody Note note,HttpServletRequest request){

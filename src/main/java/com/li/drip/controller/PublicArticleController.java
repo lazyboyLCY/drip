@@ -25,13 +25,7 @@ public class PublicArticleController {
         mv.addObject("username",username);
         return mv;
     }
-    @RequestMapping("/myarticle")
-    public ModelAndView myarticle(HttpServletRequest request) {
-        ModelAndView mv = new ModelAndView("myarticle");
-        String username= (String) request.getSession().getAttribute("username");
-        mv.addObject("username",username);
-        return mv;
-    }
+
     /**
      * @author LiChenYang
      * @date 2020-05-30

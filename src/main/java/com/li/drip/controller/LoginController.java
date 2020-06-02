@@ -40,4 +40,11 @@ public class LoginController {
             return false;
         }
     }
+    @RequestMapping("/logout")
+    public ModelAndView logout(HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView("login");
+        HttpSession session=request.getSession();
+        session.invalidate();
+        return mv;
+    }
 }

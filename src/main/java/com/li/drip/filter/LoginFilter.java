@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Arrays;
 
 //配置拦截路径
-@WebFilter(filterName = "loginfilter",urlPatterns = {"/personalpage/*"}) //设置需要过滤的路径 "/controller/*"
+@WebFilter(filterName = "loginfilter",urlPatterns = {"/personalpage/*","/dynamicmood/*","/personaldata/*","/personalpage/*","/publicarticle/*","/msgboard/*","/information/*","/publicnote/*","/read/*"}) //设置需要过滤的路径 "/controller/*"
 public class LoginFilter implements Filter {
     @Autowired
     LoginService loginService;

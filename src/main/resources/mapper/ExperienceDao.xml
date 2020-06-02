@@ -17,5 +17,6 @@
                 e_senduser =#{username}
             </if>
         </where>
+        ORDER BY e_time DESC
     </select>
 </mapper>
