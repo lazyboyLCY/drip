@@ -37,7 +37,6 @@
             <li class="layui-nav-item"><a href="/login/logout">退出</a></li>
         </ul>
     </div>
-
     <!--    侧边栏-->
     <div class="layui-side layui-bg-green">
         <div class="layui-side-scroll">
@@ -65,7 +64,6 @@
             </ul>
         </div>
     </div>
-
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
@@ -78,18 +76,19 @@
                     <div class="layui-row layui-col-space15" style="width: auto;height: auto">
                         <div class="layui-col-md12">
                             <div class="layui-card" style="height: auto">
-                                <div  class="layui-collapse">
+                                <div class="layui-collapse">
                                     <div th:each="note,iterStat :${list}" class="layui-colla-item">
                                         <h2 th:text="'标题:'+${note.title}" class="layui-colla-title"></h2>
-                                        <div th:text="'用户名:'+${note.username}+'&nbsp&nbsp&nbsp&nbsp'+'时间:'+${note.createTime}" class="layui-colla-content layui-show"></div>
-                                        <div th:utext="'笔记内容:'+${note.message}" class="layui-colla-content layui-show" style="height: 100px"></div>
-                                        <button th:onclick="'showDelete('+${note.id}+')'" type="button" class="layui-btn layui-btn-primary layui-btn-fluid">删除</button>
+                                        <div th:text="'用户名:'+${note.username}+'&nbsp&nbsp&nbsp&nbsp'+'时间:'+${note.createTime}"
+                                             class="layui-colla-content layui-show"></div>
+                                        <div th:utext="'笔记内容:'+${note.message}" class="layui-colla-content layui-show"
+                                             style="height: 100px"></div>
+                                        <button th:onclick="'showDelete('+${note.id}+')'" type="button"
+                                                class="layui-btn layui-btn-primary layui-btn-fluid">删除
+                                        </button>
                                         <div th:text="''"></div>
                                     </div>
                                 </div>
-
-
-                                <!--表格-->
                             </div>
                         </div>
                     </div>
@@ -97,12 +96,10 @@
             </div>
         </div>
     </div>
-</div>
-</div>
-<div class="layui-footer">
-    <!-- 底部固定区域 -->
-    ©licy 动态心情
-</div>
+    <div class="layui-footer" style="background-color: white">
+        <!-- 底部固定区域 -->
+        ©licy 我的笔记
+    </div>
 </div>
 <script th:src="@{/layui/layui.js}"></script>
 <script>
@@ -116,19 +113,19 @@
     });
 
     function showDelete(id) {
-        var data={id:id} //JS里定义对象
+        var data = {id: id} //JS里定义对象
         layui.jquery.ajax({
-            type:"POST",
-            url:"/publicnote/deleteNote",
+            type: "POST",
+            url: "/publicnote/deleteNote",
             async: false, //改为同步请求
-            contentType:'application/json;charset=UTF-8',
-            data:JSON.stringify(data),
-            dataType:'json',
-            success:function(data){
-                if(data){
+            contentType: 'application/json;charset=UTF-8',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (data) {
+                if (data) {
                     //layer.msg('用户名或密码正确');
-                    location.href="/publicnote/searchNote";
-                }else{
+                    location.href = "/publicnote/searchNote";
+                } else {
                     layer.msg('删除失败');
                 }
             }

@@ -35,7 +35,6 @@
             <li class="layui-nav-item"><a href="/login/logout">退出</a></li>
         </ul>
     </div>
-
     <!--    侧边栏-->
     <div class="layui-side layui-bg-green">
         <div class="layui-side-scroll">
@@ -63,7 +62,6 @@
             </ul>
         </div>
     </div>
-
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
@@ -77,21 +75,26 @@
                         <div class="layui-col-md12">
                             <div class="layui-card" style="height: auto">
                                 <form class="layui-form" action="">
-                                    <div class="layui-form-item" style="margin:10px;padding: 10px;padding-top: 20px;margin-left: 0px">
+                                    <div class="layui-form-item"
+                                         style="margin:10px;padding: 10px;padding-top: 20px;margin-left: 0px">
                                         <label class="layui-form-label">标题</label>
                                         <div class="layui-input-block">
-                                            <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                                            <input type="text" name="title" required lay-verify="required"
+                                                   placeholder="请输入标题" autocomplete="off" class="layui-input">
                                         </div>
                                     </div>
 
-                                    <div class="layui-form-item layui-form-text" style="margin:10px;padding: 10px;margin-left: 0px">
+                                    <div class="layui-form-item layui-form-text"
+                                         style="margin:10px;padding: 10px;margin-left: 0px">
                                         <label class="layui-form-label">内容</label>
                                         <div class="layui-input-block">
-                                            <textarea id="demo" name="message" lay-verify="content" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                            <textarea id="demo" name="message" lay-verify="content" placeholder="请输入内容"
+                                                      class="layui-textarea"></textarea>
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
-                                        <div class="layui-input-block" style="margin:10px;padding: 10px;margin-left: 150px;padding-bottom: 20px">
+                                        <div class="layui-input-block"
+                                             style="margin:10px;padding: 10px;margin-left: 150px;padding-bottom: 20px">
                                             <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
                                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                         </div>
@@ -106,36 +109,34 @@
             </div>
         </div>
     </div>
-</div>
-</div>
-<div class="layui-footer">
-    <!-- 底部固定区域 -->
-    ©licy 动态心情
-</div>
+    <div class="layui-footer" style="background-color: white">
+        <!-- 底部固定区域 -->
+        ©licy 记录笔记
+    </div>
 </div>
 <script th:src="@{/layui/layui.js}"></script>
 <script>
     //JavaScript代码区域
-    layui.use(['element', 'layer', 'form','layedit'], function () {
+    layui.use(['element', 'layer', 'form', 'layedit'], function () {
         var element = layui.element;
         var layer = layui.layer;
         var form = layui.form;
         var layedit = layui.layedit;
-        var index=layedit.build('demo', {
+        var index = layedit.build('demo', {
             height: 400,//设置编辑器高度
             tool: ['strong' //加粗
-                ,'italic' //斜体
-                ,'underline' //下划线
-                ,'del' //删除线
-                ,'|' //分割线
-                ,'left' //左对齐
-                ,'center' //居中对齐
-                ,'right' //右对齐
-                ,'face' //表情
+                , 'italic' //斜体
+                , 'underline' //下划线
+                , 'del' //删除线
+                , '|' //分割线
+                , 'left' //左对齐
+                , 'center' //居中对齐
+                , 'right' //右对齐
+                , 'face' //表情
             ] //设置功能列表
         });//建立编辑器
         form.verify({
-            content:function () {
+            content: function () {
                 layedit.sync(index);
             }
         })

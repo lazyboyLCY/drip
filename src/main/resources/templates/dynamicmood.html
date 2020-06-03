@@ -92,7 +92,7 @@
                                             <div class="layui-form-item layui-form-text">
                                                 <label class="layui-form-label">文本域</label>
                                                 <div class="layui-input-block">
-                                                    <textarea name="message" placeholder="请输入内容"
+                                                    <textarea id="demo" name="message" lay-verify="content" placeholder="请输入内容"
                                                               class="layui-textarea"></textarea>
                                                 </div>
                                             </div>
@@ -110,18 +110,6 @@
                             </div>
                         </div>
 
-
-                        <!--                        <ul th:each="dynamic,iterStat :${list}" style="list-style:none">-->
-                        <!--                            <li class="layui-col-md12">-->
-                        <!--                                <dl class="layui-card">-->
-                        <!--                                    <dd th:text="'用户名   :'+${dynamic.username}" class="layui-card-body"></dd>-->
-                        <!--                                    <dd th:text="'发布时间   :'+${dynamic.sendtime}" class="layui-card-body"></dd>-->
-                        <!--                                    <dd th:text="'标题:   '+${dynamic.title}" class="layui-card-body"></dd>-->
-                        <!--                                    <dd th:text="'动态:   '+${dynamic.message}" class="layui-card-body"></dd>-->
-                        <!--                                    <dd th:text="'-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;'" class="layui-card-body"></dd>-->
-                        <!--                                </dl>-->
-                        <!--                            </li>-->
-                        <!--                        </ul>-->
                         <div class="layui-row layui-col-space15">
                             <div class="layui-col-md12">
                                 <div class="layui-card" style="height: auto;padding: 20px">
@@ -133,7 +121,7 @@
                                                     class="layui-timeline-title"></h3>
                                                 <h5 th:text="'用户名   :'+${dynamic.username}"></h5>
                                                 <h5 th:text="'标题:   '+${dynamic.title}"></h5>
-                                                <p th:text="'动态:   '+${dynamic.message}"></p>
+                                                <p th:utext="'动态:   '+${dynamic.message}"></p>
                                             </dl>
                                         </li>
                                     </ul>
@@ -142,29 +130,43 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
-
     </div>
 
 
-</div>
-
-
-<div class="layui-footer">
-    <!-- 底部固定区域 -->
-    ©licy 动态心情
+    <div class="layui-footer" style="background-color: white">
+        <!-- 底部固定区域 -->
+        ©licy 动态心情
+    </div>
 </div>
 
 <script th:src="@{/layui/layui.js}"></script>
 <script>
     //JavaScript代码区域
-    layui.use(['element', 'layer', 'form'], function () {
+    layui.use(['element', 'layer', 'form','layedit'], function () {
         var element = layui.element;
         var layer = layui.layer;
         var form = layui.form;
+        var layedit = layui.layedit;
+        var index = layedit.build('demo', {
+            height: 200,//设置编辑器高度
+            tool: ['strong' //加粗
+                , 'italic' //斜体
+                , 'underline' //下划线
+                , 'del' //删除线
+                , '|' //分割线
+                , 'left' //左对齐
+                , 'center' //居中对齐
+                , 'right' //右对齐
+                , 'face' //表情
+            ] //设置功能列表
+        });//建立编辑器
+        form.verify({
+            content: function () {
+                layedit.sync(index);
+            }
+        })
         form.on('submit(formDemo)', function (data) {
             layui.jquery.ajax({
                 type: "POST",
@@ -183,33 +185,6 @@
             return false;
         });
     });
-
-    // function showUpdate() {
-    //     layer.prompt({
-    //         formType: 2,
-    //         value: '',
-    //         title: '请输入',
-    //         area: ['350px', '50px'] //自定义文本域宽高
-    //     }, function(value, index, elem){
-    //         var data=value;
-    //         layui.jquery.ajax({
-    //             type:"POST",
-    //             url:"/personaldata/updatepersonaldata",
-    //             async: false, //改为同步请求
-    //             contentType:'application/json;charset=UTF-8',
-    //             data:JSON.stringify(data),
-    //             success:function(data){
-    //                 if(data){
-    //                     //layer.msg('用户名或密码正确');
-    //                     location.href="/personaldata/searchpersonaldata";
-    //                 }else{
-    //                     layer.msg('修改失败');
-    //                 }
-    //             }
-    //         });
-    //         layer.close(index);
-    //     });
-    // }
 </script>
 </body>
 </html>

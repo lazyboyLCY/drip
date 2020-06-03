@@ -2,7 +2,7 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>记录笔记</title>
+    <title>芬芳留言板</title>
     <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
 
 </head>
@@ -35,7 +35,6 @@
             <li class="layui-nav-item"><a href="/login/logout">退出</a></li>
         </ul>
     </div>
-
     <!--    侧边栏-->
     <div class="layui-side layui-bg-green">
         <div class="layui-side-scroll">
@@ -108,30 +107,24 @@
                                         <dl class="layui-card">
                                             <dd th:text="'用户名   :'+${message.username}" class="layui-card-body"></dd>
                                             <dd th:text="'发布时间   :'+${message.createTime}" class="layui-card-body"></dd>
-<!--                                            <dd th:text="'标题:   '+${message.title}" class="layui-card-body"></dd>-->
+                                            <!--                                            <dd th:text="'标题:   '+${message.title}" class="layui-card-body"></dd>-->
                                             <dd th:text="'留言内容:   '+${message.message}" class="layui-card-body"></dd>
                                             <hr th:text="''" class="layui-bg-gray">
                                         </dl>
                                     </li>
                                 </ul>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
-
-
             </div>
         </div>
-
     </div>
 
-</div>
-<div class="layui-footer">
-    <!-- 底部固定区域 -->
-    ©licy 动态心情
-</div>
+    <div class="layui-footer" style="background-color: white">
+        <!-- 底部固定区域 -->
+        ©licy 芬芳留言板
+    </div>
 </div>
 <script th:src="@{/layui/layui.js}"></script>
 <script>
